@@ -1,46 +1,35 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-// Import des écrans
-import HomeScreen from "./index";
-import TransfersScreen from "./transfers";
-import SendScreen from "./send";
-import ReceiversScreen from "./receivers";
-import HelpScreen from "./help";
-
 // Empêcher l’écran de démarrage de se cacher automatiquement
 SplashScreen.preventAutoHideAsync();
-
-const Tab = createBottomTabNavigator();
 
 // Fonction pour le rendu des icônes dans le menu
 const TabBarIcon = (routeName: string, color: string, size: number) => {
   let iconName: keyof typeof Ionicons.glyphMap;
 
   switch (routeName) {
-    case "Home":
+    case "index":
       iconName = "home";
       break;
-    case "Transfers":
+    case "transfers":
       iconName = "list";
       break;
-    case "Send":
+    case "send":
       iconName = "paper-plane";
       break;
-    case "Receivers":
+    case "receivers":
       iconName = "people";
       break;
-    case "Help":
+    case "help":
       iconName = "help-circle";
       break;
     default:
@@ -68,23 +57,21 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ color, size }) => TabBarIcon(route.name, color, size),
-            tabBarActiveTintColor: "purple",
-            tabBarInactiveTintColor: "gray",
-            tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
-            headerShown: false,
-          })}
-        >
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Transfers" component={TransfersScreen} />
-          <Tab.Screen name="Send" component={SendScreen} />
-          <Tab.Screen name="Receivers" component={ReceiversScreen} />
-          <Tab.Screen name="Help" component={HelpScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <Tabs
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => TabBarIcon(route.name, color, size),
+          tabBarActiveTintColor: "purple",
+          tabBarInactiveTintColor: "gray",
+          tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
+          headerShown: false,
+        })}
+      >
+        <Tabs.Screen name="index" options={{ title: "Home" }} />
+        <Tabs.Screen name="transfers" options={{ title: "Transfers" }} />
+        <Tabs.Screen name="send" options={{ title: "Send" }} />
+        <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
+        <Tabs.Screen name="help" options={{ title: "Help" }} />
+      </Tabs>
       <StatusBar style="auto" />
     </ThemeProvider>
   );
