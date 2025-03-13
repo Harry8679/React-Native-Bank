@@ -4,6 +4,13 @@ import { useRouter } from "expo-router";
 export default function SendScreen() {
   const router = useRouter();
 
+  const options = [
+    { name: "IBAN", route: "/send/iban" },
+    { name: "WALLET", route: "/send/wallet" },
+    { name: "INTERNATIONAL", route: "/send/international" },
+    { name: "CARD", route: "/send/card" },
+  ] as const;
+
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
       {/* Logo en haut */}
@@ -12,15 +19,10 @@ export default function SendScreen() {
       </View>
 
       {/* Liste des options */}
-      {[
-        { name: "IBAN", route: "/send/iban" },
-        { name: "WALLET", route: "/send/wallet" },
-        { name: "INTERNATIONAL", route: "/send/international" },
-        { name: "CARD", route: "/send/card" },
-      ].map((item, index) => (
+      {options.map((item, index) => (
         <TouchableOpacity
           key={index}
-          onPress={() => router.push(item.route)}
+          onPress={() => router.push({ pathname: item.route })} // ✅ Correction ici
           style={{
             backgroundColor: index === 1 ? "#2E7D32" : "white", // WALLET en vert
             padding: 15,
