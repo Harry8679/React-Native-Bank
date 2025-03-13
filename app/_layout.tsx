@@ -59,7 +59,8 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Tabs
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => TabBarIcon(route.name, color, size),
+          // tabBarIcon: ({ color, size }) => TabBarIcon(route.name, color, size),
+          tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
           tabBarActiveTintColor: "purple",
           tabBarInactiveTintColor: "gray",
           tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
@@ -71,6 +72,9 @@ export default function RootLayout() {
         <Tabs.Screen name="send" options={{ title: "Send" }} />
         <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
         <Tabs.Screen name="help" options={{ title: "Help" }} />
+        {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
+        <Tabs.Screen name="(tabs)" options={{ href: null }} />
+        <Tabs.Screen name="+not-found" options={{ href: null }} />
       </Tabs>
       <StatusBar style="auto" />
     </ThemeProvider>
