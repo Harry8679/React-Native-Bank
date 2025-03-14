@@ -23,7 +23,7 @@ const TabBarIcon = (routeName: string, color: string, size: number) => {
     case "historique":
       iconName = "list";
       break;
-    case "send":
+    case "sodec":
       iconName = "paper-plane";
       break;
     case "receivers":
@@ -71,12 +71,14 @@ export default function RootLayout() {
         <Tabs.Screen name="historique" options={{ title: "Historique" }} />
         <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
         {/* <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} /> */}
-        <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} />
+        {/* <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} /> */}
         <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
         <Tabs.Screen name="help" options={{ title: "Help" }} />
         {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
         <Tabs.Screen name="(tabs)" options={{ href: null }} />
         <Tabs.Screen name="+not-found" options={{ href: null }} />
+        <Tabs.Screen name="send" options={{ href: null }} />
+        {/* <Tabs.Screen name="sodec" options={{ href: null }} /> */}
       </Tabs>
       <StatusBar style="auto" />
     </ThemeProvider>
