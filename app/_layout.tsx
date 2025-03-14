@@ -59,7 +59,6 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Tabs
         screenOptions={({ route }) => ({
-          // tabBarIcon: ({ color, size }) => TabBarIcon(route.name, color, size),
           tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
           tabBarActiveTintColor: "purple",
           tabBarInactiveTintColor: "gray",
@@ -70,15 +69,17 @@ export default function RootLayout() {
         <Tabs.Screen name="index" options={{ title: "Accueil" }} />
         <Tabs.Screen name="historique" options={{ title: "Historique" }} />
         <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
-        {/* <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} /> */}
-        {/* <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} /> */}
         <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
         <Tabs.Screen name="help" options={{ title: "Help" }} />
+        
         {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
         <Tabs.Screen name="(tabs)" options={{ href: null }} />
         <Tabs.Screen name="+not-found" options={{ href: null }} />
         <Tabs.Screen name="send" options={{ href: null }} />
-        {/* <Tabs.Screen name="sodec" options={{ href: null }} /> */}
+        <Tabs.Screen name="sodec/paiement" options={{ href: null }} />  {/* Masquer cette route */}
+        <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} /> {/* Masquer d'autres routes */}
+        <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
+        <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
       </Tabs>
       <StatusBar style="auto" />
     </ThemeProvider>
