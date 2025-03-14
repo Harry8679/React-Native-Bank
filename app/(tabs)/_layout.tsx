@@ -5,7 +5,7 @@ import { View, Text } from "react-native";
 
 // Import des écrans
 import HomeScreen from "./index";
-import TransfersScreen from "../transfers";
+import TransfersScreen from "../historique";
 import SendScreen from "../send";
 import ReceiversScreen from "../receivers";
 import HelpScreen from "../help";

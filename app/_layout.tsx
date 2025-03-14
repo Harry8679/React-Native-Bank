@@ -20,7 +20,7 @@ const TabBarIcon = (routeName: string, color: string, size: number) => {
     case "index":
       iconName = "home";
       break;
-    case "transfers":
+    case "historique":
       iconName = "list";
       break;
     case "send":
@@ -67,9 +67,9 @@ export default function RootLayout() {
           headerShown: false,
         })}
       >
-        <Tabs.Screen name="index" options={{ title: "Home" }} />
-        <Tabs.Screen name="transfers" options={{ title: "Transfers" }} />
-        <Tabs.Screen name="send" options={{ title: "Send" }} />
+        <Tabs.Screen name="index" options={{ title: "Accueil" }} />
+        <Tabs.Screen name="historique" options={{ title: "Historique" }} />
+        <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} />
         <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
         <Tabs.Screen name="help" options={{ title: "Help" }} />
         {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
