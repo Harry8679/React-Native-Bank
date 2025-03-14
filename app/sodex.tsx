@@ -1,35 +1,24 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
-
-// Mapping des icônes
-const iconMap: { [key: string]: any } = {
-  Transfert: require("../assets/icons/transfert.png"),
-  Paiement: require("../assets/icons/paiement.png"),
-  "Agency Banking": require("../assets/icons/agency-banking.png"),
-  "Génération de voucher": require("../assets/icons/generation-voucher.png"),
-  "Autres services": require("../assets/icons/autres-services.png"),
-};
+import { Ionicons } from "@expo/vector-icons";
 
 export default function SodecScreen() {
   const router = useRouter();
 
+  // Définir les icônes associées à chaque option
   const options = [
-    { name: "Transfert", route: "/send" },
-    { name: "Paiement", route: "/sodec/paiement" },
-    { name: "Agency Banking", route: "/sodec/agency-banking" },
-    { name: "Génération de voucher", route: "/sodec/voucher" },
-    { name: "Autres services", route: "/sodec/autres-services" },
+    { name: "Transfert", route: "/send", icon: "swap-horizontal" },
+    { name: "Paiement", route: "/sodec/paiement", icon: "card" },
+    { name: "Agency Banking", route: "/sodec/agency-banking", icon: "business" },
+    { name: "Génération de voucher", route: "/sodec/voucher", icon: "document-text" },
+    { name: "Autres services", route: "/sodec/autres-services", icon: "grid" },
   ] as const;
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20, justifyContent: "center" }}>
       {/* Logo en haut */}
       <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
-        <Image 
-          source={require("../assets/logo.png")} 
-          style={{ width: 200, height: 70 }}
-          resizeMode="contain" 
-        />
+        <Ionicons name="wallet" size={80} color="#2E7D32" /> 
       </View>
 
       {/* Liste des options */}
@@ -50,14 +39,8 @@ export default function SodecScreen() {
               flexDirection: "row",
             }}
           >
-            {/* Vérifier si l'icône existe avant d'afficher */}
-            {iconMap[item.name] && (
-              <Image
-                source={iconMap[item.name]}
-                style={{ width: 24, height: 24, marginRight: 10 }}
-                resizeMode="contain"
-              />
-            )}
+            {/* Icône associée */}
+            <Ionicons name={item.icon} size={24} color={index === 1 ? "white" : "black"} style={{ marginRight: 10 }} />
             <Text style={{ fontSize: 18, fontWeight: "bold", color: index === 1 ? "white" : "black" }}>
               {item.name}
             </Text>
