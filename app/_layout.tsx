@@ -1,84 +1,52 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Tabs } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
-import "react-native-reanimated";
+import { View, Text, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-import { useColorScheme } from "@/hooks/useColorScheme";
+export default function SodecScreen() {
+  const router = useRouter();
 
-// Empêcher l’écran de démarrage de se cacher automatiquement
-SplashScreen.preventAutoHideAsync();
-
-// Fonction pour le rendu des icônes dans le menu
-const TabBarIcon = (routeName: string, color: string, size: number) => {
-  let iconName: keyof typeof Ionicons.glyphMap;
-
-  switch (routeName) {
-    case "index":
-      iconName = "home";
-      break;
-    case "historique":
-      iconName = "list";
-      break;
-    case "send":
-      iconName = "paper-plane";
-      break;
-    case "receivers":
-      iconName = "people";
-      break;
-    case "help":
-      iconName = "help-circle";
-      break;
-    default:
-      iconName = "ellipse";
-  }
-
-  return <Ionicons name={iconName} size={size} color={color} />;
-};
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
+  // Définir les icônes associées à chaque option
+  const options = [
+    { name: "Transfert", route: "/send", icon: "swap-horizontal" },
+    { name: "Paiement", route: "/sodec/paiement", icon: "card" },
+    { name: "Agency Banking", route: "/sodec/agency-banking", icon: "business" },
+    { name: "Génération de voucher", route: "/sodec/voucher", icon: "document-text" },
+    { name: "Autres services", route: "/sodec/autres-services", icon: "grid" },
+  ] as const;
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Tabs
-        screenOptions={({ route }) => ({
-          // tabBarIcon: ({ color, size }) => TabBarIcon(route.name, color, size),
-          tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
-          tabBarActiveTintColor: "purple",
-          tabBarInactiveTintColor: "gray",
-          tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
-          headerShown: false,
-        })}
-      >
-        <Tabs.Screen name="index" options={{ title: "Accueil" }} />
-        <Tabs.Screen name="historique" options={{ title: "Historique" }} />
-        <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
-        {/* <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} /> */}
-        <Tabs.Screen name="send" options={{ title: "SODEC Pay" }} />
-        <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
-        <Tabs.Screen name="help" options={{ title: "Help" }} />
-        {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
-        <Tabs.Screen name="(tabs)" options={{ href: null }} />
-        <Tabs.Screen name="+not-found" options={{ href: null }} />
-      </Tabs>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <View style={{ flex: 1, backgroundColor: "white", padding: 20, justifyContent: "center" }}>
+      {/* Logo en haut */}
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
+        <Ionicons name="wallet" size={80} color="#2E7D32" /> 
+      </View>
+
+      {/* Liste des options */}
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
+        {options.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => router.push(item.route)}
+            style={{
+              width: "80%",
+              backgroundColor: index === 1 ? "#2E7D32" : "white", // Paiement en vert
+              padding: 15,
+              borderRadius: 5,
+              marginBottom: 10,
+              borderWidth: 1,
+              borderColor: "#ccc",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            {/* Icône associée */}
+            <Ionicons name={item.icon} size={24} color={index === 1 ? "white" : "black"} style={{ marginRight: 10 }} />
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: index === 1 ? "white" : "black" }}>
+              {item.name}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
   );
 }
