@@ -1,11 +1,20 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 
+// Mapping des icônes
+const iconMap: { [key: string]: any } = {
+  Transfert: require("../assets/icons/transfert.png"),
+  Paiement: require("../assets/icons/paiement.png"),
+  "Agency Banking": require("../assets/icons/agency-banking.png"),
+  "Génération de voucher": require("../assets/icons/generation-voucher.png"),
+  "Autres services": require("../assets/icons/autres-services.png"),
+};
+
 export default function SodecScreen() {
   const router = useRouter();
 
   const options = [
-    { name: "Transfert", route: "/send" }, // Redirige vers send.tsx
+    { name: "Transfert", route: "/send" },
     { name: "Paiement", route: "/sodec/paiement" },
     { name: "Agency Banking", route: "/sodec/agency-banking" },
     { name: "Génération de voucher", route: "/sodec/voucher" },
@@ -18,7 +27,7 @@ export default function SodecScreen() {
       <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
         <Image 
           source={require("../assets/logo.png")} 
-          style={{ width: 200, height: 70 }} // Agrandir le logo
+          style={{ width: 200, height: 70 }}
           resizeMode="contain" 
         />
       </View>
@@ -30,7 +39,7 @@ export default function SodecScreen() {
             key={index}
             onPress={() => router.push(item.route)}
             style={{
-              width: "80%", // Rendre les boutons plus larges
+              width: "80%",
               backgroundColor: index === 1 ? "#2E7D32" : "white", // Paiement en vert
               padding: 15,
               borderRadius: 5,
@@ -41,12 +50,14 @@ export default function SodecScreen() {
               flexDirection: "row",
             }}
           >
-            {/* Icône (optionnel) */}
-            <Image
-              source={require(`../assets/icons/${item.name.toLowerCase().replace(/\s/g, "-")}.png`)}
-              style={{ width: 24, height: 24, marginRight: 10 }}
-              resizeMode="contain"
-            />
+            {/* Vérifier si l'icône existe avant d'afficher */}
+            {iconMap[item.name] && (
+              <Image
+                source={iconMap[item.name]}
+                style={{ width: 24, height: 24, marginRight: 10 }}
+                resizeMode="contain"
+              />
+            )}
             <Text style={{ fontSize: 18, fontWeight: "bold", color: index === 1 ? "white" : "black" }}>
               {item.name}
             </Text>
