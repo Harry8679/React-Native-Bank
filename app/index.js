@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -13,7 +13,7 @@ export default function HomeScreen() {
         <Ionicons name="gift" size={30} color="#FFC107" />
       </View>
 
-      {/* Conversion des devises */}
+      {/* Conversion des devises avec emojis 🇫🇷 🇬🇦 */}
       <View 
         style={{
           backgroundColor: "#F8F8F8",
@@ -26,14 +26,14 @@ export default function HomeScreen() {
         }}
       >
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image source={require("../assets/france.png")} style={{ width: 30, height: 20, marginRight: 5 }} />
+          <Text style={{ fontSize: 20, marginRight: 5 }}>🇫🇷</Text>
           <Text style={{ fontSize: 18, fontWeight: "bold" }}>1.00 EUR</Text>
         </View>
 
         <Ionicons name="swap-horizontal" size={24} color="gray" />
 
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Image source={require("../assets/gabon.png")} style={{ width: 30, height: 20, marginRight: 5 }} />
+          <Text style={{ fontSize: 20, marginRight: 5 }}>🇬🇦</Text>
           <Text style={{ fontSize: 18, fontWeight: "bold" }}>656.00 XAF</Text>
         </View>
       </View>
