@@ -27,7 +27,9 @@ export default function WalletScreen() {
           <TouchableOpacity
             key={index}
             // onPress={() => router.push({ pathname: item.route })} // ✅ Correction ici
-            onPress={() => router.push(`wallet/${item.name.toLowerCase().replace(/\s/g, "-")}`)} // ✅ Correction
+            // onPress={() => router.push(`/wallet/${item.name.toLowerCase().replace(/\s/g, "-")}`)} // ✅ Correction
+            onPress={() => router.push({ pathname: item.route } as any)}
+
             style={{
               backgroundColor: item.highlight ? "#2E7D32" : "white",
               padding: 15,
