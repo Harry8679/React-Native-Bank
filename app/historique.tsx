@@ -1,9 +1,18 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Platform } from "react-native";
 
 export default function TransfersScreen() {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
-      <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "center", marginBottom: 20 }}>
+      {/* Ajout de marginTop pour éviter l'encoche sur iPhone */}
+      <Text 
+        style={{ 
+          fontSize: 24, 
+          fontWeight: "bold", 
+          textAlign: "center", 
+          marginBottom: 20, 
+          marginTop: Platform.OS === "ios" ? 50 : 20, // Décalage spécifique iPhone
+        }}
+      >
         Historique des Transferts
       </Text>
 
