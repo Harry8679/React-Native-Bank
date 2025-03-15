@@ -9,7 +9,7 @@ export default function HomeScreen() {
       {/* Header avec icônes */}
       <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
         <Ionicons name="menu" size={30} color="#2E7D32" />
-        <Text style={{ fontSize: 20, fontWeight: "bold", color: "#2E7D32" }}>Bienvenue, Adebayo !</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold", color: "#2E7D32" }}>Bienvenue, Matsaya !</Text>
         <Ionicons name="gift" size={30} color="#FFC107" />
       </View>
 
