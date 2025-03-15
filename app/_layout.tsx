@@ -6,15 +6,12 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
+import { GestureHandlerRootView } from "react-native-gesture-handler"; // ✅ Ajouté
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 // Empêcher l’écran de démarrage de se cacher automatiquement
 SplashScreen.preventAutoHideAsync();
-
-// 🎨 **Définition des nouvelles couleurs**
-const GOLDEN_YELLOW = "#FFC107";  // Jaune doré (remplace le violet)
-const LOGO_GREEN = "#2E7D32";      // Vert du logo
 
 // Fonction pour le rendu des icônes dans le menu
 const TabBarIcon = (routeName: string, color: string, size: number) => {
@@ -60,32 +57,34 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Tabs
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
-          tabBarActiveTintColor: GOLDEN_YELLOW,  // 🟡 **Actif en Jaune Doré**
-          tabBarInactiveTintColor: "gray",
-          tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
-          headerShown: false,
-        })}
-      >
-        <Tabs.Screen name="index" options={{ title: "Accueil" }} />
-        <Tabs.Screen name="historique" options={{ title: "Historique" }} />
-        <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
-        <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
-        <Tabs.Screen name="help" options={{ title: "Help" }} />
-        
-        {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
-        <Tabs.Screen name="(tabs)" options={{ href: null }} />
-        <Tabs.Screen name="+not-found" options={{ href: null }} />
-        <Tabs.Screen name="send" options={{ href: null }} />
-        <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
-        <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
-        <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
-        <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
-      </Tabs>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}> {/* ✅ Ajouté */}
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Tabs
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
+            tabBarActiveTintColor: "#FFC107", // Jaune doré
+            tabBarInactiveTintColor: "gray",
+            tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
+            headerShown: false,
+          })}
+        >
+          <Tabs.Screen name="index" options={{ title: "Accueil" }} />
+          <Tabs.Screen name="historique" options={{ title: "Historique" }} />
+          <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
+          <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
+          <Tabs.Screen name="help" options={{ title: "Help" }} />
+
+          {/* Masquer ces écrans */}
+          <Tabs.Screen name="(tabs)" options={{ href: null }} />
+          <Tabs.Screen name="+not-found" options={{ href: null }} />
+          <Tabs.Screen name="send" options={{ href: null }} />
+          <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
+          <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
+          <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
+          <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
+        </Tabs>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
