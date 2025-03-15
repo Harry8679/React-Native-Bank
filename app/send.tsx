@@ -6,7 +6,7 @@ export default function SendScreen() {
 
   const options = [
     { name: "IBAN", route: "/send/iban" },
-    { name: "WALLET", route: "/send/wallet" },
+    { name: "WALLET", route: "/wallet/wallet" },
     { name: "INTERNATIONAL", route: "/send/international" },
     { name: "CARD", route: "/send/card" },
   ] as const;
