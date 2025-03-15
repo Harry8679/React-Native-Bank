@@ -26,7 +26,8 @@ export default function WalletScreen() {
         {countries.map((item, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => router.push(item.route)}
+            // onPress={() => router.push({ pathname: item.route })} // ✅ Correction ici
+            onPress={() => router.push(`wallet/${item.name.toLowerCase().replace(/\s/g, "-")}`)} // ✅ Correction
             style={{
               backgroundColor: item.highlight ? "#2E7D32" : "white",
               padding: 15,
@@ -41,6 +42,7 @@ export default function WalletScreen() {
           </TouchableOpacity>
         ))}
       </View>
+
     </SafeAreaView>
   );
 }
