@@ -12,6 +12,10 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 // Empêcher l’écran de démarrage de se cacher automatiquement
 SplashScreen.preventAutoHideAsync();
 
+// 🎨 **Définition des nouvelles couleurs**
+const GOLDEN_YELLOW = "#FFC107";  // Jaune doré (remplace le violet)
+const LOGO_GREEN = "#2E7D32";      // Vert du logo
+
 // Fonction pour le rendu des icônes dans le menu
 const TabBarIcon = (routeName: string, color: string, size: number) => {
   let iconName: keyof typeof Ionicons.glyphMap;
@@ -60,7 +64,7 @@ export default function RootLayout() {
       <Tabs
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
-          tabBarActiveTintColor: "purple",
+          tabBarActiveTintColor: GOLDEN_YELLOW,  // 🟡 **Actif en Jaune Doré**
           tabBarInactiveTintColor: "gray",
           tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
           headerShown: false,
@@ -76,8 +80,8 @@ export default function RootLayout() {
         <Tabs.Screen name="(tabs)" options={{ href: null }} />
         <Tabs.Screen name="+not-found" options={{ href: null }} />
         <Tabs.Screen name="send" options={{ href: null }} />
-        <Tabs.Screen name="sodec/paiement" options={{ href: null }} />  {/* Masquer cette route */}
-        <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} /> {/* Masquer d'autres routes */}
+        <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
+        <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
         <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
         <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
       </Tabs>
