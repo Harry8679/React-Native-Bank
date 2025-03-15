@@ -5,7 +5,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        
+
         {/* Header avec icônes */}
         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
           <Ionicons name="menu" size={30} color="#2E7D32" />
