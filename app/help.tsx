@@ -46,7 +46,9 @@ export default function HelpScreen() {
             }}
           >
             {/* Icône associée */}
-            <Ionicons name={item.icon} size={30} color={item.color} style={{ marginRight: 15 }} />
+            {/* <Ionicons name={item.icon} size={30} color={item.color} style={{ marginRight: 15 }} /> */}
+            <Ionicons name={item.icon as keyof typeof Ionicons.glyphMap} size={30} color={item.color} style={{ marginRight: 15 }} />
+
 
             {/* Texte */}
             <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.title}</Text>
