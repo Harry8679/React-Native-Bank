@@ -17,17 +17,12 @@ export default function SendScreen() {
       
       {/* ✅ Bouton Retour en haut */}
       <TouchableOpacity 
-        onPress={() => {
-          if (router.canGoBack()) {
-            router.back();  // 🔙 Si possible, revenir en arrière
-          } else {
-            router.push("/sodec");  // 🔄 Sinon, forcer la redirection vers "/sodec"
-          }
-        }}
-        style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
-      >
-        <Ionicons name="arrow-back" size={30} color="black" />
-      </TouchableOpacity>
+  onPress={() => router.replace("/sodec")} // Remplace au lieu d'empiler
+  style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
+>
+  <Ionicons name="arrow-back" size={30} color="black" />
+</TouchableOpacity>
+
 
 
       {/* Logo en haut */}
