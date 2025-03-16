@@ -1,7 +1,12 @@
 import { View, Text, TouchableOpacity, SafeAreaView, TextInput, ScrollView } from "react-native";
 import { useState } from "react";
+import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+// import { View, Text, TouchableOpacity, SafeAreaView, TextInput, ScrollView } from "react-native";
+// import { useState } from "react";
 
 export default function WalletScreen() {
+  const router = useRouter();
   const [openCountry, setOpenCountry] = useState<string | null>(null);
   const [selectedOperator, setSelectedOperator] = useState<string | null>(null);
   const [formPosition, setFormPosition] = useState<{ country: string; operator: string } | null>(null);
@@ -17,6 +22,24 @@ export default function WalletScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
+      {/* 🔥 Bouton Retour en arrière */}
+      <TouchableOpacity
+        onPress={() => {
+          if (router.canGoBack()) {
+            router.back();
+          } else {
+            router.push("/sodec"); // Redirection de secours
+          }
+        }}
+        style={{
+          position: "absolute",
+          top: 40,
+          left: 20,
+          zIndex: 10,
+        }}
+      >
+        <Ionicons name="arrow-back" size={30} color="black" />
+      </TouchableOpacity>
       {/* Ajout du ScrollView pour permettre le défilement */}
       <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
         
