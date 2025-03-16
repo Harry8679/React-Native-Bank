@@ -1,23 +1,19 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Tabs } from "expo-router";
+import { Tabs, Stack, usePathname } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
-import { Stack, usePathname } from "expo-router";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-// Empêcher l’écran de démarrage de se cacher automatiquement
 SplashScreen.preventAutoHideAsync();
 
-// 🎨 **Définition des nouvelles couleurs**
-const GOLDEN_YELLOW = "#FFC107";  // Jaune doré (remplace le violet)
-const LOGO_GREEN = "#2E7D32";      // Vert du logo
+const GOLDEN_YELLOW = "#FFC107";  
+const LOGO_GREEN = "#2E7D32";      
 
-// Fonction pour le rendu des icônes dans le menu
 const TabBarIcon = (routeName: string, color: string, size: number) => {
   let iconName: keyof typeof Ionicons.glyphMap;
 
@@ -46,7 +42,8 @@ const TabBarIcon = (routeName: string, color: string, size: number) => {
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const pathname = usePathname(); // 🔥 Permet de vérifier la page actuelle
+  const pathname = usePathname();  
+
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -61,7 +58,7 @@ export default function RootLayout() {
     return null;
   }
 
-  // 🔥 Liste des pages qui doivent afficher le menu
+  // ✅ Liste des pages qui doivent afficher le menu en bas
   const showTabBar = ["/", "/historique", "/sodec", "/receivers", "/help"].includes(pathname);
 
   return (
@@ -70,13 +67,12 @@ export default function RootLayout() {
         <Tabs
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
-            tabBarActiveTintColor: GOLDEN_YELLOW,  // 🟡 **Actif en Jaune Doré**
+            tabBarActiveTintColor: GOLDEN_YELLOW,  
             tabBarInactiveTintColor: "gray",
             tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
             headerShown: false,
           })}
         >
-          {/* ✅ Affichage du menu */}
           <Tabs.Screen name="index" options={{ title: "Accueil" }} />
           <Tabs.Screen name="historique" options={{ title: "Historique" }} />
           <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
@@ -93,7 +89,8 @@ export default function RootLayout() {
           <Tabs.Screen name="wallet" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
         </Tabs>
       ) : (
-        <Stack> {/* ❌ Pas de menu ici */}
+        // ✅ Toutes les autres pages SANS le menu
+        <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="wallet" />
           <Stack.Screen name="wallet/cameroun" />
           <Stack.Screen name="wallet/centrafrique" />
