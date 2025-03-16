@@ -1,10 +1,10 @@
+import { View, Text, TouchableOpacity, SafeAreaView, TextInput, ScrollView } from "react-native";
 import { useState } from "react";
-import { View, Text, TouchableOpacity, TextInput, SafeAreaView, ScrollView } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 export default function WalletScreen() {
-  const [openCountry, setOpenCountry] = useState(null);
-  const [selectedOperator, setSelectedOperator] = useState(null);
+  const [openCountry, setOpenCountry] = useState<string | null>(null);
+  const [selectedOperator, setSelectedOperator] = useState<string | null>(null);
+  const [formPosition, setFormPosition] = useState<{ country: string; operator: string } | null>(null);
 
   const countries = [
     { name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"] },
@@ -17,8 +17,10 @@ export default function WalletScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
-      <ScrollView>
-        {/* Header */}
+      {/* Ajout du ScrollView pour permettre le défilement */}
+      <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
+        
+        {/* Titre */}
         <View style={{ alignItems: "center", marginBottom: 20 }}>
           <Text style={{ fontSize: 24, fontWeight: "bold", color: "#2E7D32" }}>GIMACPAY</Text>
           <Text style={{ fontSize: 18, color: "gray" }}>Transfert Wallet</Text>
@@ -28,73 +30,120 @@ export default function WalletScreen() {
         <View style={{ backgroundColor: "white", borderRadius: 10, overflow: "hidden" }}>
           {countries.map((country, index) => (
             <View key={index}>
+              {/* Pays */}
               <TouchableOpacity
-                onPress={() => setOpenCountry(openCountry === country.name ? null : country.name)}
+                onPress={() => {
+                  setOpenCountry(openCountry === country.name ? null : country.name);
+                  setSelectedOperator(null); // Fermer le formulaire si un autre pays est sélectionné
+                }}
                 style={{
                   backgroundColor: openCountry === country.name ? "#2E7D32" : "white",
                   padding: 15,
                   borderBottomWidth: 1,
                   borderBottomColor: "#ccc",
                   alignItems: "center",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
                 }}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold", color: openCountry === country.name ? "white" : "black" }}>
                   {country.name}
                 </Text>
-                <Ionicons name={openCountry === country.name ? "chevron-up" : "chevron-down"} size={24} color={openCountry === country.name ? "white" : "black"} />
               </TouchableOpacity>
 
+              {/* Liste des opérateurs (Affichée uniquement si le pays est ouvert) */}
               {openCountry === country.name && (
-                <View style={{ paddingLeft: 20, paddingVertical: 10 }}>
+                <View style={{ paddingLeft: 20, backgroundColor: "#f9f9f9" }}>
                   {country.operators.map((operator, opIndex) => (
-                    <TouchableOpacity
-                      key={opIndex}
-                      onPress={() => setSelectedOperator(operator)}
-                      style={{
-                        paddingVertical: 10,
-                        borderBottomWidth: opIndex !== country.operators.length - 1 ? 1 : 0,
-                        borderBottomColor: "#ccc",
-                      }}
-                    >
-                      <Text style={{ fontSize: 16 }}>{operator}</Text>
-                    </TouchableOpacity>
+                    <View key={opIndex}>
+                      <TouchableOpacity
+                        onPress={() => {
+                          if (selectedOperator === operator) {
+                            setSelectedOperator(null);
+                            setFormPosition(null);
+                          } else {
+                            setSelectedOperator(operator);
+                            setFormPosition({ country: country.name, operator });
+                          }
+                        }}
+                        style={{
+                          padding: 15,
+                          borderBottomWidth: 1,
+                          borderBottomColor: "#ddd",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text style={{ fontSize: 16, fontWeight: "bold", color: "black" }}>
+                          {operator}
+                        </Text>
+                      </TouchableOpacity>
+
+                      {/* ✅ Formulaire (Affiché sous l'opérateur sélectionné) */}
+                      {formPosition?.operator === operator && formPosition?.country === country.name && (
+                        <View
+                          style={{
+                            marginTop: 5,
+                            padding: 20,
+                            backgroundColor: "white",
+                            borderRadius: 10,
+                            shadowColor: "#000",
+                            shadowOpacity: 0.1,
+                            shadowRadius: 5,
+                            elevation: 3,
+                          }}
+                        >
+                          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#2E7D32", textAlign: "center" }}>
+                            {operator}
+                          </Text>
+
+                          {/* Champs du formulaire */}
+                          <TextInput placeholder="Identifiant du destinataire" style={styles.input} />
+                          <TextInput placeholder="Montant de la transaction" keyboardType="numeric" style={styles.input} />
+                          <TextInput placeholder="Ref transaction (GIMAC)" style={styles.input} />
+
+                          {/* Bouton Valider */}
+                          <TouchableOpacity
+                            style={{
+                              backgroundColor: "#2E7D32",
+                              padding: 15,
+                              borderRadius: 5,
+                              marginTop: 10,
+                              alignItems: "center",
+                            }}
+                          >
+                            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>Valider</Text>
+                          </TouchableOpacity>
+
+                          {/* 🔥 Bouton pour fermer le formulaire */}
+                          <TouchableOpacity
+                            onPress={() => setSelectedOperator(null)}
+                            style={{
+                              marginTop: 10,
+                              alignItems: "center",
+                            }}
+                          >
+                            <Text style={{ fontSize: 16, color: "red" }}>Fermer</Text>
+                          </TouchableOpacity>
+                        </View>
+                      )}
+                    </View>
                   ))}
                 </View>
               )}
             </View>
           ))}
         </View>
-
-        {/* Formulaire de transaction */}
-        {selectedOperator && (
-          <View style={{ marginTop: 20, padding: 15, borderRadius: 10, backgroundColor: "#F8F9FA" }}>
-            <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 10 }}>Transfert {selectedOperator}</Text>
-
-            <TextInput
-              placeholder="Identifiant du destinataire"
-              style={{ backgroundColor: "white", padding: 10, borderRadius: 5, marginBottom: 10, borderWidth: 1, borderColor: "#ccc" }}
-            />
-            <TextInput
-              placeholder="Montant de la transaction"
-              keyboardType="numeric"
-              style={{ backgroundColor: "white", padding: 10, borderRadius: 5, marginBottom: 10, borderWidth: 1, borderColor: "#ccc" }}
-            />
-            <TextInput
-              placeholder="Ref transaction (GIMAC)"
-              style={{ backgroundColor: "white", padding: 10, borderRadius: 5, marginBottom: 10, borderWidth: 1, borderColor: "#ccc" }}
-            />
-
-            <TouchableOpacity
-              style={{ backgroundColor: "#2E7D32", padding: 15, borderRadius: 5, alignItems: "center" }}
-              onPress={() => alert(`Transfert vers ${selectedOperator} en cours...`)}
-            >
-              <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>Valider</Text>
-            </TouchableOpacity>
-          </View>
-        )}
       </ScrollView>
     </SafeAreaView>
   );
 }
+
+// ✅ Styles pour les champs de saisie
+const styles = {
+  input: {
+    height: 50,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginTop: 10,
+  },
+};
