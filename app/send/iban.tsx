@@ -31,7 +31,7 @@ export default function IbanScreen() {
 
       {/* Titre */}
       <View style={{ alignItems: "center", marginBottom: 40 }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold", color: "#2E7D32" }}>GIMACPAY</Text>
+        <Text style={{ fontSize: 24, fontWeight: "bold", color: "#2E7D32" }}>SODEC</Text>
         <Text style={{ fontSize: 18, color: "gray" }}>Autres</Text>
       </View>
 
