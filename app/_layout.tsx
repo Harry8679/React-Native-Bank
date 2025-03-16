@@ -111,49 +111,4 @@ export default function RootLayout() {
       <StatusBar style="auto" />
     </ThemeProvider>
   );
-  
-
-  // return (
-  //   <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-  //     <Tabs
-  //       screenOptions={({ route }) => ({
-  //         tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
-  //         tabBarActiveTintColor: GOLDEN_YELLOW,  // 🟡 **Actif en Jaune Doré**
-  //         tabBarInactiveTintColor: "gray",
-  //         tabBarStyle: { backgroundColor: "white", height: 60, paddingBottom: 5 },
-  //         headerShown: false,
-  //       })}
-  //     >
-  //       <Tabs.Screen name="index" options={{ title: "Accueil" }} />
-  //       <Tabs.Screen name="historique" options={{ title: "Historique" }} />
-  //       <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
-  //       <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
-  //       <Tabs.Screen name="help" options={{ title: "Help" }} />
-        
-        {/* Masquer ces écrans pour éviter qu'ils apparaissent dans le menu */}
-      //   <Tabs.Screen name="(tabs)" options={{ href: null }} />
-      //   <Tabs.Screen name="+not-found" options={{ href: null }} />
-      //   <Tabs.Screen name="send" options={{ href: null }} />
-      //   <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
-      //   <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
-      //   <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
-      //   <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
-      //   <Tabs.Screen name="wallet" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
-      // </Tabs>
-      // <Stack screenOptions={{ headerShown: false }}>
-        {/* ✅ Onglets visibles uniquement pour les pages principales */}
-        // <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
-        {/* ✅ Toutes les pages SANS le menu (Stack) */}
-  //       <Stack.Screen name="wallet" options={{ presentation: "modal", headerShown: false }} />
-  //       <Stack.Screen name="wallet/cameroun" options={{ presentation: "modal", headerShown: false }} />
-  //       <Stack.Screen name="wallet/centrafrique" options={{ presentation: "modal", headerShown: false }} />
-  //       <Stack.Screen name="wallet/congo" options={{ presentation: "modal", headerShown: false }} />
-  //       <Stack.Screen name="wallet/gabon" options={{ presentation: "modal", headerShown: false }} />
-  //       <Stack.Screen name="wallet/guinee" options={{ presentation: "modal", headerShown: false }} />
-  //       <Stack.Screen name="wallet/tchad" options={{ presentation: "modal", headerShown: false }} />
-  //     </Stack>
-  //     <StatusBar style="auto" />
-  //   </ThemeProvider>
-  // );
 }
