@@ -79,6 +79,15 @@ export default function RootLayout() {
           <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
           <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
           <Tabs.Screen name="help" options={{ title: "Help" }} />
+
+          <Tabs.Screen name="(tabs)" options={{ href: null }} />
+          <Tabs.Screen name="+not-found" options={{ href: null }} />
+          <Tabs.Screen name="send" options={{ href: null }} />
+          <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
+          <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
+          <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
+          <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
+          <Tabs.Screen name="wallet" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
         </Tabs>
       ) : (
         // ❌ Pas de menu ici
