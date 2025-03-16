@@ -17,13 +17,7 @@ export default function SendScreen() {
       
       {/* ✅ Bouton Retour en haut */}
       <TouchableOpacity 
-        onPress={() => {
-          if (router.canGoBack()) {
-            router.back(); // Si un historique existe, revenir en arrière
-          } else {
-            router.push("/sodec"); // Sinon, aller à la page "SODEC"
-          }
-        }}
+        onPress={() => router.push("/sodec")} 
         style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
       >
         <Ionicons name="arrow-back" size={30} color="black" />
