@@ -1,12 +1,15 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import WalletScreen from "./wallet"; // 📌 Ton fichier wallet.tsx
+import { Stack } from "expo-router";
 
-const Stack = createStackNavigator();
-
-export default function WalletStack() {
+export default function WalletLayout() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="wallet" component={WalletScreen} />
-    </Stack.Navigator>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="cameroun" />
+      <Stack.Screen name="centrafrique" />
+      <Stack.Screen name="congo" />
+      <Stack.Screen name="gabon" />
+      <Stack.Screen name="guinee" />
+      <Stack.Screen name="tchad" />
+    </Stack>
   );
 }
