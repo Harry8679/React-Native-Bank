@@ -65,7 +65,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       {showTabBar ? (
         // ✅ Affichage du menu uniquement pour les pages principales
-        <Tabs
+        <Tabs initialRouteName="index" // ✅ Définit index comme page d'accueilx
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
             tabBarActiveTintColor: GOLDEN_YELLOW,

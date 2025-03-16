@@ -1,9 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons"; // ✅ Importer l'icône
 
 export default function SendScreen() {
   const router = useRouter();
+  const navigation = useNavigation(); // ✅ Gestion de la navigation
 
   const options = [
     { name: "IBAN", route: "/send/iban" },
@@ -17,16 +19,20 @@ export default function SendScreen() {
       
       {/* ✅ Bouton Retour en haut */}
       <TouchableOpacity 
-  onPress={() => router.replace("/sodec")} // Remplace au lieu d'empiler
-  style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
->
-  <Ionicons name="arrow-back" size={30} color="black" />
-</TouchableOpacity>
+        onPress={() => {
+          if (navigation.canGoBack()) {
+            navigation.goBack(); // 🔥 Revenir en arrière si possible
+          } else {
+            router.replace("/sodec"); // 🔥 Sinon, aller à /sodec
+          }
+        }}
+        style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
+      >
+        <Ionicons name="arrow-back" size={30} color="black" />
+      </TouchableOpacity>
 
-
-
-      {/* Logo en haut */}
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}> 
+      {/* Logo */}
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
         <Image 
           source={require("../assets/logo.png")} 
           style={{ width: 200, height: 70 }} 
@@ -42,7 +48,7 @@ export default function SendScreen() {
             onPress={() => router.push(item.route)}
             style={{
               width: "80%", 
-              backgroundColor: index === 1 ? "#2E7D32" : "white", 
+              backgroundColor: index === 1 ? "#2E7D32" : "white",
               padding: 15,
               borderRadius: 5,
               marginBottom: 10,
