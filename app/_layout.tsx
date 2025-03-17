@@ -88,6 +88,7 @@ export default function RootLayout() {
           <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
           <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
           <Tabs.Screen name="wallet" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
+          <Tabs.Screen name="send/iban" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
         </Tabs>
       ) : (
         // ❌ Pas de menu ici

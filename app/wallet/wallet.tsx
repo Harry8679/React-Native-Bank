@@ -12,6 +12,7 @@ export default function WalletScreen() {
   const [formPosition, setFormPosition] = useState<{ country: string; operator: string } | null>(null);
 
   const countries = [
+    // { name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"], country: 🇨🇲 },
     { name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"] },
     { name: "Centrafrique", operators: ["Orange Money"] },
     { name: "Congo", operators: ["Mobile Money CG", "AIRTEL Money", "BGFI Mobile", "BIPAY"] },
@@ -45,7 +46,7 @@ export default function WalletScreen() {
         
         {/* Titre */}
         <View style={{ alignItems: "center", marginBottom: 20 }}>
-          <Text style={{ fontSize: 24, fontWeight: "bold", color: "#2E7D32" }}>GIMACPAY</Text>
+          <Text style={{ fontSize: 24, fontWeight: "bold", color: "#2E7D32" }}>SODEC</Text>
           <Text style={{ fontSize: 18, color: "gray" }}>Transfert Wallet</Text>
         </View>
 
@@ -74,7 +75,7 @@ export default function WalletScreen() {
 
               {/* Liste des opérateurs (Affichée uniquement si le pays est ouvert) */}
               {openCountry === country.name && (
-                <View style={{ paddingLeft: 20, backgroundColor: "#f9f9f9" }}>
+                <View style={{ paddingLeft: 20, backgroundColor: "#ccc" }}>
                   {country.operators.map((operator, opIndex) => (
                     <View key={opIndex}>
                       <TouchableOpacity
