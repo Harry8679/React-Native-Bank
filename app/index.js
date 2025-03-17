@@ -73,7 +73,7 @@ export default function HomeScreen() {
         </View>
 
         {/* ✅ Barre de navigation */}
-        <View style={styles.bottomNav}>
+        {/* <View style={styles.bottomNav}>
           {[
             { title: "Accueil", icon: "home-outline" },
             { title: "Comptes", icon: "card-outline" },
@@ -86,7 +86,7 @@ export default function HomeScreen() {
               <Text style={styles.navText}>{item.title}</Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </View> */}
 
       </ScrollView>
     </SafeAreaView>
