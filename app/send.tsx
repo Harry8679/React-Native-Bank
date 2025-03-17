@@ -28,7 +28,7 @@ export default function SendScreen() {
         }}
         style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
       >
-        <Ionicons name="arrow-back" size={30} color="black" />
+        <Ionicons name="arrow-back" size={60} color="black" />
       </TouchableOpacity>
 
       {/* Logo */}
