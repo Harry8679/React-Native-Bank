@@ -36,7 +36,7 @@ export default function SodecScreen() {
             onPress={() => router.push(item.route)}
             style={{
               width: "80%",
-              backgroundColor: index === 1 ? "#2E7D32" : "white", // Paiement en vert
+              backgroundColor: index === 0 ? "#2E7D32" : "white", // Paiement en vert
               padding: 15,
               borderRadius: 5,
               marginBottom: 10,
@@ -47,8 +47,8 @@ export default function SodecScreen() {
             }}
           >
             {/* Icône associée */}
-            <Ionicons name={item.icon} size={24} color={index === 1 ? "white" : "black"} style={{ marginRight: 10 }} />
-            <Text style={{ fontSize: 18, fontWeight: "bold", color: index === 1 ? "white" : "black" }}>
+            <Ionicons name={item.icon} size={24} color={index === 0 ? "white" : "black"} style={{ marginRight: 10 }} />
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: index === 0 ? "white" : "black" }}>
               {item.name}
             </Text>
           </TouchableOpacity>
