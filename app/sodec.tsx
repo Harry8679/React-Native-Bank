@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -17,8 +17,15 @@ export default function SodecScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20, justifyContent: "center" }}>
       {/* Logo en haut */}
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
+      {/* <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
         <Ionicons name="wallet" size={80} color="#2E7D32" /> 
+      </View> */}
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
+        <Image
+          source={require("../assets/logo.png")} 
+          style={{ width: 200, height: 70 }} 
+          resizeMode="contain" 
+        />
       </View>
 
       {/* Liste des options */}
