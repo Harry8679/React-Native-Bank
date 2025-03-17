@@ -39,7 +39,7 @@ export default function WalletScreen() {
           zIndex: 10,
         }}
       >
-        <Ionicons name="arrow-back" size={30} color="black" />
+        <Ionicons name="arrow-back" size={60} color="black" />
       </TouchableOpacity>
       {/* Ajout du ScrollView pour permettre le défilement */}
       <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
