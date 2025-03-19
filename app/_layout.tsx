@@ -12,7 +12,6 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 SplashScreen.preventAutoHideAsync();
 
 const GOLDEN_YELLOW = "#FFC107";
-const LOGO_GREEN = "#2E7D32";
 
 const TabBarIcon = (routeName: string, color: string, size: number) => {
   let iconName: keyof typeof Ionicons.glyphMap;
@@ -42,7 +41,7 @@ const TabBarIcon = (routeName: string, color: string, size: number) => {
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const pathname = usePathname(); // Vérifier la page actuelle
+  const pathname = usePathname();
 
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
@@ -54,18 +53,16 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
+  if (!loaded) return null;
 
-  // ✅ Liste des pages qui doivent afficher le menu en bas
+  // ✅ Liste des pages avec la TabBar
   const showTabBar = ["/", "/historique", "/sodec", "/receivers", "/help"].includes(pathname);
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       {showTabBar ? (
-        // ✅ Affichage du menu uniquement pour les pages principales
-        <Tabs initialRouteName="index" // ✅ Définit index comme page d'accueilx
+        <Tabs
+          initialRouteName="index"
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color }) => TabBarIcon(route.name, color, 36),
             tabBarActiveTintColor: GOLDEN_YELLOW,
@@ -74,25 +71,44 @@ export default function RootLayout() {
             headerShown: false,
           })}
         >
+          {/* ✅ Pages principales visibles */}
           <Tabs.Screen name="index" options={{ title: "Accueil" }} />
           <Tabs.Screen name="historique" options={{ title: "Historique" }} />
           <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
           <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
           <Tabs.Screen name="help" options={{ title: "Help" }} />
 
+          {/* ❌ Toutes les pages secondaires masquées */}
+          <Tabs.Screen name="send" options={{ href: null }} />
+          <Tabs.Screen name="send/card" options={{ href: null }} />
+          <Tabs.Screen name="send/international" options={{ href: null }} />
+          <Tabs.Screen name="send/iban" options={{ href: null }} />
+
+          <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
+          <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
+          <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
+          <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
+
+          <Tabs.Screen name="wallet" options={{ href: null }} />
+          <Tabs.Screen name="wallet/cameroun" options={{ href: null }} />
+          <Tabs.Screen name="wallet/centrafrique" options={{ href: null }} />
+          <Tabs.Screen name="wallet/congo" options={{ href: null }} />
+          <Tabs.Screen name="wallet/gabon" options={{ href: null }} />
+          <Tabs.Screen name="wallet/guinee" options={{ href: null }} />
+          <Tabs.Screen name="wallet/tchad" options={{ href: null }} />
+          <Tabs.Screen name="wallet/iban-form" options={{ href: null }} />
+          <Tabs.Screen name="wallet/mes-ibans" options={{ href: null }} />
+          <Tabs.Screen name="wallet/mes-wallets" options={{ href: null }} />
+          <Tabs.Screen name="wallet/wallet-intermediaire" options={{ href: null }} />
+          <Tabs.Screen name="wallet/wallet-to-iban" options={{ href: null }} />
+
+          {/* 🔒 Par sécurité */}
           <Tabs.Screen name="(tabs)" options={{ href: null }} />
           <Tabs.Screen name="+not-found" options={{ href: null }} />
-          <Tabs.Screen name="send" options={{ href: null }} />
-          <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
-          <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
-          <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
-          <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
-          <Tabs.Screen name="wallet" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
-          <Tabs.Screen name="send/iban" options={{ href: null }} />  {/* ✅ Masquer Wallet */}
         </Tabs>
       ) : (
-        // ❌ Pas de menu ici
         <Stack screenOptions={{ headerShown: false }}>
+          {/* 🔄 Stack navigation pour les pages secondaires */}
           <Stack.Screen name="send" />
           <Stack.Screen name="wallet" />
           <Stack.Screen name="wallet/cameroun" />
@@ -101,6 +117,11 @@ export default function RootLayout() {
           <Stack.Screen name="wallet/gabon" />
           <Stack.Screen name="wallet/guinee" />
           <Stack.Screen name="wallet/tchad" />
+          <Stack.Screen name="wallet/mes-ibans" />
+          <Stack.Screen name="wallet/mes-wallets" />
+          <Stack.Screen name="wallet/wallet-to-iban" />
+          <Stack.Screen name="wallet/wallet-intermediaire" />
+          <Stack.Screen name="wallet/iban-form" />
           <Stack.Screen name="sodec/paiement" />
           <Stack.Screen name="sodec/agency-banking" />
           <Stack.Screen name="sodec/voucher" />
