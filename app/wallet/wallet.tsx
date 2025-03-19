@@ -138,7 +138,10 @@ export default function WalletScreen() {
 
                           {/* 🔥 Bouton pour fermer le formulaire */}
                           <TouchableOpacity
-                            onPress={() => setSelectedOperator(null)}
+                            onPress={() => {
+                              setSelectedOperator(null);
+                              setFormPosition(null); // ✅ Ajouté pour vraiment fermer le formulaire
+                            }}
                             style={{
                               marginTop: 10,
                               alignItems: "center",
