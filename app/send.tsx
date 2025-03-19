@@ -9,7 +9,7 @@ export default function SendScreen() {
 
   const options = [
     { name: "IBAN", route: "/send/iban" },
-    { name: "WALLET", route: "/wallet/wallet" },
+    { name: "WALLET", route: "/wallet/wallet-intermediaire" },
     { name: "INTERNATIONAL", route: "/send/international" },
     { name: "CARD", route: "/send/card" },
   ] as const;
