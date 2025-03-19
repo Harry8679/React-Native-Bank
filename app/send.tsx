@@ -10,7 +10,7 @@ export default function SendScreen() {
   const options = [
     { name: "IBAN", route: "/wallet/iban-wallet-menu" },
     // { name: "IBAN", route: "/send/iban" },
-    { name: "IBAN DE BASE", route: "/send/iban" },
+    // { name: "IBAN DE BASE", route: "/send/iban" },
     { name: "WALLET", route: "/wallet/wallet-intermediaire" },
     { name: "INTERNATIONAL", route: "/send/international" },
     { name: "CARD", route: "/send/card" },
