@@ -28,12 +28,12 @@ export default function IbanWalletMenu() {
         </View>
 
         {/* ✅ Liens */}
-        <TouchableOpacity onPress={() => router.push("/iban-form")} style={styles.optionButton}>
+        <TouchableOpacity onPress={() => router.push("/wallet/iban-form")} style={styles.optionButton}>
           <Ionicons name="document-text" size={24} color="white" style={{ marginRight: 10 }} />
           <Text style={styles.optionText}>Enregistrement IBAN</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push("/enregistrement-wallet")} style={styles.optionButton}>
+        <TouchableOpacity onPress={() => router.push("/wallet/wallet")} style={styles.optionButton}>
           <Ionicons name="wallet" size={24} color="white" style={{ marginRight: 10 }} />
           <Text style={styles.optionText}>Enregistrement Wallet</Text>
         </TouchableOpacity>
