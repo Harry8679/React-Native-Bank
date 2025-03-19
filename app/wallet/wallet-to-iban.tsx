@@ -40,7 +40,8 @@ export default function WalletToIbanScreen() {
 
         {/* ✅ Lien : Enregistrer un nouvel IBAN */}
         <TouchableOpacity
-          onPress={() => router.push("/send/iban")} // 👉 Redirige vers la page d'enregistrement IBAN existante
+          // onPress={() => router.push("/send/iban")} // 👉 Redirige vers la page d'enregistrement IBAN existante
+          onPress={() => router.push("/wallet/iban-form")} // 👉 Redirige vers la page d'enregistrement IBAN existante
           style={styles.optionButton}
         >
           <Ionicons name="add-circle" size={24} color="white" style={{ marginRight: 10 }} />
@@ -49,7 +50,7 @@ export default function WalletToIbanScreen() {
 
         {/* ✅ Lien : Voir la liste des IBANs */}
         <TouchableOpacity
-          onPress={() => router.push("/mes-ibans")} // 👉 À créer ou à connecter
+          onPress={() => router.push("/wallet/mes-ibans")} // 👉 À créer ou à connecter
           style={styles.optionButton}
         >
           <Ionicons name="list" size={24} color="white" style={{ marginRight: 10 }} />
