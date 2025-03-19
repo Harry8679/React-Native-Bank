@@ -41,7 +41,8 @@ export default function WalletIntermediateScreen() {
 
         {/* ✅ Lien Wallet -> IBAN */}
         <TouchableOpacity
-          onPress={() => Alert.alert("Redirection", "Transfert Wallet vers IBAN à implémenter")}
+          // onPress={() => Alert.alert("Redirection", "Transfert Wallet vers IBAN à implémenter")}
+          onPress={() => router.push("/wallet/wallet-to-iban")}
           style={styles.optionButton}
         >
           <Ionicons name="swap-horizontal" size={24} color="white" style={{ marginRight: 10 }} />
