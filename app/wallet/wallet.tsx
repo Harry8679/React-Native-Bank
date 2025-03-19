@@ -12,14 +12,14 @@ export default function WalletScreen() {
   const [formPosition, setFormPosition] = useState<{ country: string; operator: string } | null>(null);
 
   const countries = [
-    // { name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"], country: 🇨🇲 },
-    { name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"] },
-    { name: "Centrafrique", operators: ["Orange Money"] },
-    { name: "Congo", operators: ["Mobile Money CG", "AIRTEL Money", "BGFI Mobile", "BIPAY"] },
-    { name: "Gabon", operators: ["AIRTEL Money", "MOOV Money", "BGFI Mobile"] },
-    { name: "Tchad", operators: ["AIRTEL Money", "MOOV Money"] },
-    { name: "Guinée Équatoriale", operators: ["MUNI DINERO", "BGFI Mobile"] },
+    { flag: "🇨🇲", name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"] },
+    { flag: "🇨🇫", name: "Centrafrique", operators: ["Orange Money"] },
+    { flag: "🇨🇬", name: "Congo", operators: ["Mobile Money CG", "AIRTEL Money", "BGFI Mobile", "BIPAY"] },
+    { flag: "🇬🇦", name: "Gabon", operators: ["AIRTEL Money", "MOOV Money", "BGFI Mobile"] },
+    { flag: "🇹🇩", name: "Tchad", operators: ["AIRTEL Money", "MOOV Money"] },
+    { flag: "🇬🇶", name: "Guinée Équatoriale", operators: ["MUNI DINERO", "BGFI Mobile"] },
   ];
+  
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
@@ -69,7 +69,7 @@ export default function WalletScreen() {
                 }}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold", color: openCountry === country.name ? "white" : "black" }}>
-                  {country.name}
+                  {country.flag} {country.name}
                 </Text>
               </TouchableOpacity>
 
