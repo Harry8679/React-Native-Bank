@@ -1,14 +1,43 @@
 import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert, Image, ScrollView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert, Image, ScrollView, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+
+// ✅ Faux IBANs simulés
+const savedIbans = [
+  { iban: "CM1234567890", name: "Jean Dupont" },
+  { iban: "CM9876543210", name: "Aude Flora" },
+  { iban: "CM5555555555", name: "Martin Paul" },
+  { iban: "CM0000111122", name: "Sophie Ndong" },
+  { iban: "CM3333444455", name: "Samuel Biko" },
+  { iban: "CM6666777788", name: "Alice Mbarga" },
+];
 
 export default function IbanFormScreen() {
   const router = useRouter();
   const [iban, setIban] = useState("");
   const [name, setName] = useState("");
+  const [filteredSuggestions, setFilteredSuggestions] = useState<any[]>([]);
 
   const isValidIban = iban.length >= 10;
+
+  // ✅ Met à jour l'IBAN et filtre les suggestions en live
+  const handleIbanChange = (text: string) => {
+    setIban(text);
+    if (text.length > 0) {
+      const suggestions = savedIbans.filter((item) => item.iban.startsWith(text));
+      setFilteredSuggestions(suggestions);
+    } else {
+      setFilteredSuggestions([]);
+    }
+  };
+
+  // ✅ Remplit automatiquement l'IBAN et le nom quand on sélectionne
+  const handleSuggestionSelect = (item: any) => {
+    setIban(item.iban);
+    setName(item.name);
+    setFilteredSuggestions([]);
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
@@ -33,9 +62,24 @@ export default function IbanFormScreen() {
             style={styles.input}
             placeholder="Saisir le numéro IBAN"
             value={iban}
-            onChangeText={setIban}
+            onChangeText={handleIbanChange}
             keyboardType="default"
           />
+
+          {/* ✅ Auto-complétion */}
+          {filteredSuggestions.length > 0 && (
+            <View style={{ backgroundColor: "#eee", borderRadius: 5, marginBottom: 10 }}>
+              {filteredSuggestions.map((item, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleSuggestionSelect(item)}
+                  style={{ padding: 10, borderBottomWidth: index !== filteredSuggestions.length - 1 ? 1 : 0, borderColor: "#ccc" }}
+                >
+                  <Text>{item.iban} - {item.name}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
 
           {/* ✅ Affiche le champ NOM uniquement si IBAN valide */}
           {isValidIban && (
