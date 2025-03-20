@@ -133,7 +133,7 @@ export default function WalletScreen() {
                               alignItems: "center",
                             }}
                           >
-                            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>Valider</Text>
+                            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>Valider 2</Text>
                           </TouchableOpacity>
 
                           {/* 🔥 Bouton pour fermer le formulaire */}
