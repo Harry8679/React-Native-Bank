@@ -61,14 +61,14 @@ export default function IbanScreen() {
               onPress={() => Alert.alert("Redirection", "Page Mes IBANs à implémenter")}
               style={styles.optionButton}
             >
-              <Text style={styles.optionText}>Voir la liste de mes IBANs</Text>
+              <Text style={styles.optionText}>Liste de mes IBANs</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => router.push("/mes-wallets")}
               style={styles.optionButton}
             >
-              <Text style={styles.optionText}>Voir la liste de mes Wallets</Text>
+              <Text style={styles.optionText}>Liste de mes Wallets</Text>
             </TouchableOpacity>
           </View>
         )}
