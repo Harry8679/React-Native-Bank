@@ -45,7 +45,8 @@ export default function WalletIntermediateScreen() {
           onPress={() => router.push("/wallet/wallet-to-iban")}
           style={styles.optionButton}
         >
-          <Ionicons name="swap-horizontal" size={24} color="white" style={{ marginRight: 10 }} />
+          {/* <Ionicons name="swap-horizontal" size={24} color="white" style={{ marginRight: 10 }} /> */}
+          <Ionicons name="document-text" size={24} color="white" style={{ marginRight: 10 }} />
           <Text style={styles.optionText}>Transfert Wallet à IBAN</Text>
         </TouchableOpacity>
 
