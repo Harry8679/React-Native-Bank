@@ -11,6 +11,14 @@ export default function MesIbansScreen() {
     { iban: "CM987654321098765432109", name: "Marie Claire" },
   ];
 
+  // ✅ Fonction pour rediriger vers la page de transfert
+  const handleTransfer = (item: { iban: string; name: string }) => {
+    router.push({
+      pathname: "/wallet/transfer-to-iban",
+      params: { iban: item.iban, name: item.name },
+    });
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -32,12 +40,21 @@ export default function MesIbansScreen() {
           Liste de mes IBANs
         </Text>
 
-        {/* ✅ Liste des IBANs */}
+        {/* ✅ Liste des IBANs CLiquables */}
         {ibans.map((item, index) => (
-          <View key={index} style={{ padding: 15, backgroundColor: "#f5f5f5", borderRadius: 8, marginBottom: 15 }}>
+          <TouchableOpacity
+            key={index}
+            onPress={() => handleTransfer(item)} // 🔥 Redirection au clic
+            style={{
+              padding: 15,
+              backgroundColor: "#f5f5f5",
+              borderRadius: 8,
+              marginBottom: 15,
+            }}
+          >
             <Text style={{ fontSize: 16, fontWeight: "bold", color: "#2E7D32" }}>{item.name}</Text>
             <Text style={{ color: "gray", marginTop: 5 }}>{item.iban}</Text>
-          </View>
+          </TouchableOpacity>
         ))}
 
         {ibans.length === 0 && (
