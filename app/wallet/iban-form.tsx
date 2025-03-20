@@ -99,7 +99,7 @@ export default function IbanFormScreen() {
               Alert.alert("Succès", `Le numéro IBAN ${iban} a été enregistré avec succès`, [
                 // { text: "OK", onPress: () => router.push("/sodec") },
                 { text: "OK", onPress: () => router.push({
-                  pathname: "/transfer-to-iban",
+                  pathname: "/wallet/transfer-to-iban",
                   params: { iban, name }
                 }) 
               },
