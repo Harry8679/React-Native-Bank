@@ -39,6 +39,15 @@ export default function WalletIntermediateScreen() {
           <Text style={{ fontSize: 18, color: "gray" }}>Choisissez votre option</Text>
         </View>
 
+        {/* ✅ Lien Wallet -> Wallet */}
+        <TouchableOpacity
+          onPress={() => router.push("/wallet/wallet")}
+          style={styles.optionButton}
+        >
+          <Ionicons name="wallet" size={24} color="white" style={{ marginRight: 10 }} />
+          <Text style={styles.optionText}>Transfert Wallet à Wallet</Text>
+        </TouchableOpacity>
+
         {/* ✅ Lien Wallet -> IBAN */}
         <TouchableOpacity
           // onPress={() => Alert.alert("Redirection", "Transfert Wallet vers IBAN à implémenter")}
@@ -48,15 +57,6 @@ export default function WalletIntermediateScreen() {
           {/* <Ionicons name="swap-horizontal" size={24} color="white" style={{ marginRight: 10 }} /> */}
           <Ionicons name="document-text" size={24} color="white" style={{ marginRight: 10 }} />
           <Text style={styles.optionText}>Transfert Wallet à IBAN</Text>
-        </TouchableOpacity>
-
-        {/* ✅ Lien Wallet -> Wallet */}
-        <TouchableOpacity
-          onPress={() => router.push("/wallet/wallet")}
-          style={styles.optionButton}
-        >
-          <Ionicons name="wallet" size={24} color="white" style={{ marginRight: 10 }} />
-          <Text style={styles.optionText}>Transfert Wallet à Wallet</Text>
         </TouchableOpacity>
 
       </ScrollView>
