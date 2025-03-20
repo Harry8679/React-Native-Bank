@@ -97,7 +97,12 @@ export default function IbanFormScreen() {
           <TouchableOpacity
             onPress={() => {
               Alert.alert("Succès", `Le numéro IBAN ${iban} a été enregistré avec succès`, [
-                { text: "OK", onPress: () => router.push("/sodec") },
+                // { text: "OK", onPress: () => router.push("/sodec") },
+                { text: "OK", onPress: () => router.push({
+                  pathname: "/transfer-to-iban",
+                  params: { iban, name }
+                }) 
+              },
               ]);
             }}
             style={[styles.submitButton, { backgroundColor: isValidIban && name ? "#2E7D32" : "gray" }]}
