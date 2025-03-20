@@ -40,12 +40,12 @@ export default function IbanWalletMenu() {
 
         <TouchableOpacity onPress={() => router.push("/wallet/mes-ibans")} style={styles.optionButton}>
           <Ionicons name="list" size={24} color="white" style={{ marginRight: 10 }} />
-          <Text style={styles.optionText}>Voir la liste de mes IBANs</Text>
+          <Text style={styles.optionText}>Liste de mes IBANs</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("/wallet/mes-wallets")} style={styles.optionButton}>
           <Ionicons name="list" size={24} color="white" style={{ marginRight: 10 }} />
-          <Text style={styles.optionText}>Voir la liste de mes Wallets</Text>
+          <Text style={styles.optionText}>Liste de mes Wallets</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
