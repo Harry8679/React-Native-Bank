@@ -11,7 +11,6 @@ export default function SodecScreen() {
     { name: "Agency Banking", route: "/agency/agency-banking", icon: "business" },
     { name: "Génération de voucher", route: "/sodec/voucher", icon: "document-text" },
     { name: "Autres services", route: "/sodec/autres-services", icon: "grid" },
-    { name: "Autres services 2", route: "/sodec/test", icon: "grid" },
   ] as const;
 
   return (
