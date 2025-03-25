@@ -11,7 +11,7 @@ export default function SuccessScreen() {
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
 
-      <Image source={require("../../assets/gimacpay.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
+      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
       <Text style={{ fontSize: 24, color: "green", textAlign: "center", marginVertical: 20 }}>ACCUSÉ RÉCEPTION</Text>
 
       <Text style={{ marginBottom: 20, textAlign: "center" }}>✔ Le dépôt de XXXX FCFA a été envoyé avec succès.</Text>
