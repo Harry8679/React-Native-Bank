@@ -100,6 +100,8 @@ export default function RootLayout() {
           <Tabs.Screen name="wallet/mes-ibans" options={{ href: null }} />
           <Tabs.Screen name="wallet/mes-wallets" options={{ href: null }} />
           <Tabs.Screen name="wallet/wallet-intermediaire" options={{ href: null }} />
+          <Tabs.Screen name="send/send" options={{ href: null }} />
+          
           <Tabs.Screen name="wallet/wallet-to-iban" options={{ href: null }} />
 
           {/* <Tabs.Screen name="agency/agency-banking" options={{ href: null }} /> */}

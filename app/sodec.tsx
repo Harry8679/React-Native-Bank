@@ -5,39 +5,38 @@ import { Ionicons } from "@expo/vector-icons";
 export default function SodecScreen() {
   const router = useRouter();
 
-  // Définir les icônes associées à chaque option
+  // ✅ Définir les icônes et les routes
   const options = [
-    { name: "Transfert", route: "/send/send", icon: "swap-horizontal" },
+    { name: "Transfert", route: "/send", icon: "swap-horizontal" },
     { name: "Paiement", route: "/sodec/paiement", icon: "card" },
-    { name: "Agency Banking 2", route: "/agency/agency-banking", icon: "business" },
-    { name: "Agency Banking", route: "/agency/agency-banking", icon: "business" }, // ✅ ira sur agency-banking.tsx
+    { name: "Agency Banking", route: "/agency/agency-banking", icon: "business" },  // ✅ Attention route exacte
     { name: "Génération de voucher", route: "/sodec/voucher", icon: "document-text" },
     { name: "Autres services", route: "/sodec/autres-services", icon: "grid" },
   ] as const;
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20, justifyContent: "center" }}>
-      {/* Logo en haut */}
-      {/* <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
-        <Ionicons name="wallet" size={80} color="#2E7D32" /> 
-      </View> */}
+      {/* ✅ Logo */}
       <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
         <Image
-          source={require("../assets/logo.png")} 
-          style={{ width: 200, height: 70 }} 
-          resizeMode="contain" 
+          source={require("../assets/logo.png")}
+          style={{ width: 200, height: 70 }}
+          resizeMode="contain"
         />
       </View>
 
-      {/* Liste des options */}
+      {/* ✅ Liste des options */}
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         {options.map((item, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => router.push(item.route)}
+            onPress={() => {
+              console.log("Navigation vers =>", item.route); // 🔥 Affiche la vraie route ciblée
+              router.push(item.route);
+            }}
             style={{
               width: "80%",
-              backgroundColor: index === 0 ? "#2E7D32" : "white", // Paiement en vert
+              backgroundColor: index === 0 ? "#2E7D32" : "white",
               padding: 15,
               borderRadius: 5,
               marginBottom: 10,
@@ -47,7 +46,6 @@ export default function SodecScreen() {
               flexDirection: "row",
             }}
           >
-            {/* Icône associée */}
             <Ionicons name={item.icon} size={24} color={index === 0 ? "white" : "black"} style={{ marginRight: 10 }} />
             <Text style={{ fontSize: 18, fontWeight: "bold", color: index === 0 ? "white" : "black" }}>
               {item.name}
