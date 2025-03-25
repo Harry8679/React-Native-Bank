@@ -74,7 +74,7 @@ export default function RootLayout() {
           {/* ✅ Pages principales visibles */}
           <Tabs.Screen name="index" options={{ title: "Accueil" }} />
           <Tabs.Screen name="historique" options={{ title: "Historique" }} />
-          <Tabs.Screen name="sodec" options={{ title: "SODEC Pay" }} />
+          <Tabs.Screen name="sodec" options={{ title: "GIMAC Pay" }} />
           <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
           <Tabs.Screen name="help" options={{ title: "Help" }} />
 
