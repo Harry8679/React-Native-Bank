@@ -18,7 +18,7 @@ export default function ConfirmationScreen() {
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
 
-      <Image source={require("../../../assets/gimacpay.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
+      <Image source={require("../../assets/gimacpay.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
       <Text style={{ fontSize: 24, textAlign: "center", marginVertical: 20 }}>ENVOI DE DÉPÔT</Text>
 
       <Text style={{ marginBottom: 20 }}>

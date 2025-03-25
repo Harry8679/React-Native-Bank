@@ -16,12 +16,25 @@ export default function DepotScreen() {
   const router = useRouter();
   const [client, setClient] = useState("");
   const [amount, setAmount] = useState("");
+  const [participant, setParticipant] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("Sélectionner un pays");
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleSelect = (country: string) => {
     setSelectedCountry(country);
     setModalVisible(false);
+  };
+
+  const handleSubmit = () => {
+    if (!client || !amount || !participant || selectedCountry === "Sélectionner un pays") {
+      alert("Veuillez remplir tous les champs");
+      return;
+    }
+
+    router.push({
+      pathname: "/sodec/agency/agency-confirmation",
+      params: { client, amount, country: selectedCountry, participant }
+    });
   };
 
   return (
@@ -31,10 +44,10 @@ export default function DepotScreen() {
         onPress={() => (router.canGoBack() ? router.back() : router.push("/sodec"))}
         style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
       >
-        <Ionicons name="arrow-back" size={60} color="black" />
+        <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
 
-      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
+      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center", marginTop: 50 }} />
       <Text style={{ fontSize: 24, textAlign: "center", marginVertical: 20 }}>DÉPÔT</Text>
 
       {/* Sélecteur de Pays */}
@@ -69,7 +82,12 @@ export default function DepotScreen() {
       </Modal>
 
       {/* Participant */}
-      <TextInput placeholder="Participant | Réseau" style={styles.input} />
+      <TextInput
+        placeholder="Participant | Réseau"
+        style={styles.input}
+        value={participant}
+        onChangeText={setParticipant}
+      />
 
       {/* Numéro client */}
       <TextInput
@@ -77,6 +95,7 @@ export default function DepotScreen() {
         style={styles.input}
         value={client}
         onChangeText={setClient}
+        keyboardType="phone-pad"
       />
 
       {/* Montant */}
@@ -88,10 +107,7 @@ export default function DepotScreen() {
         onChangeText={setAmount}
       />
 
-      <TouchableOpacity
-        onPress={() => router.push({ pathname: "/sodec/agency/agency-confirmation", params: { client, amount } })}
-        style={styles.btn}
-      >
+      <TouchableOpacity onPress={handleSubmit} style={styles.btn}>
         <Text style={styles.text}>VALIDER</Text>
       </TouchableOpacity>
     </View>
