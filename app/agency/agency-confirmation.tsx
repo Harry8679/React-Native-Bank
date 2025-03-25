@@ -26,8 +26,10 @@ export default function ConfirmationScreen() {
         <TouchableOpacity
           onPress={() => {
             pin === "123456"
-              ? router.push("/sodec/agency/agency-success")
-              : router.push("/sodec/agency/agency-error");
+              // ? router.push("/sodec/agency/agency-success")
+              ? router.push("/agency/agency-success")
+              // : router.push("/sodec/agency/agency-error");
+              : router.push("/agency/agency-error");
           }}
           style={styles.btn}
         >

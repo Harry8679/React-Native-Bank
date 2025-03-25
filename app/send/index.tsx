@@ -8,13 +8,11 @@ export default function SendScreen() {
   const navigation = useNavigation(); // ✅ Gestion de la navigation
 
   const options = [
-    { name: "IBAN", route: "/wallet/iban-wallet-menu" },
-    // { name: "IBAN", route: "/send/iban" },
-    // { name: "IBAN DE BASE", route: "/send/iban" },
+    { name: "IBAN", route: "/send/iban" },
     { name: "WALLET", route: "/wallet/wallet-intermediaire" },
     { name: "INTERNATIONAL", route: "/send/international" },
     { name: "CARD", route: "/send/card" },
-  ] as const;
+  ];
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20, justifyContent: "center" }}>
@@ -36,8 +34,7 @@ export default function SendScreen() {
       {/* Logo */}
       <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
         <Image 
-          source={require("../assets/logo.png")}
-          // source={require("../../assets/logo.png")}
+          source={require("../../assets/logo.png")}
           style={{ width: 200, height: 70 }} 
           resizeMode="contain" 
         />
