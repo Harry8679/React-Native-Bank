@@ -7,9 +7,10 @@ export default function SodecScreen() {
 
   // Définir les icônes associées à chaque option
   const options = [
-    { name: "Transfert", route: "/send", icon: "swap-horizontal" },
+    { name: "Transfert", route: "/send/send", icon: "swap-horizontal" },
     { name: "Paiement", route: "/sodec/paiement", icon: "card" },
-    { name: "Agency Banking", route: "/sodec/agency-banking", icon: "business" },
+    { name: "Agency Banking 2", route: "/agency/agency-banking", icon: "business" },
+    { name: "Agency Banking", route: "/agency/agency-banking", icon: "business" }, // ✅ ira sur agency-banking.tsx
     { name: "Génération de voucher", route: "/sodec/voucher", icon: "document-text" },
     { name: "Autres services", route: "/sodec/autres-services", icon: "grid" },
   ] as const;

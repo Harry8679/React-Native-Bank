@@ -36,7 +36,8 @@ export default function SendScreen() {
       {/* Logo */}
       <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
         <Image 
-          source={require("../assets/logo.png")} 
+          // source={require("../assets/logo.png")}
+          source={require("../../assets/logo.png")}
           style={{ width: 200, height: 70 }} 
           resizeMode="contain" 
         />

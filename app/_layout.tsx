@@ -84,7 +84,7 @@ export default function RootLayout() {
           <Tabs.Screen name="send/international" options={{ href: null }} />
           <Tabs.Screen name="send/iban" options={{ href: null }} />
 
-          <Tabs.Screen name="sodec/agency-banking" options={{ href: null }} />
+          <Tabs.Screen name="agency/agency-banking" options={{ href: null }} />
           <Tabs.Screen name="sodec/autres-services" options={{ href: null }} />
           <Tabs.Screen name="sodec/paiement" options={{ href: null }} />
           <Tabs.Screen name="sodec/voucher" options={{ href: null }} />
@@ -102,7 +102,7 @@ export default function RootLayout() {
           <Tabs.Screen name="wallet/wallet-intermediaire" options={{ href: null }} />
           <Tabs.Screen name="wallet/wallet-to-iban" options={{ href: null }} />
 
-          <Tabs.Screen name="agency/agency-banking" options={{ href: null }} />
+          {/* <Tabs.Screen name="agency/agency-banking" options={{ href: null }} /> */}
           <Tabs.Screen name="agency/agency-confirmation" options={{ href: null }} />
           <Tabs.Screen name="agency/agency-depot" options={{ href: null }} />
           <Tabs.Screen name="agency/agency-error" options={{ href: null }} />
@@ -129,7 +129,8 @@ export default function RootLayout() {
           <Stack.Screen name="wallet/wallet-intermediaire" />
           <Stack.Screen name="wallet/iban-form" />
           <Stack.Screen name="sodec/paiement" />
-          <Stack.Screen name="sodec/agency-banking" />
+          {/* <Stack.Screen name="agency/agency-banking" /> */}
+          <Stack.Screen name="agency/agency-banking" />  {/* ✅ Active et obligatoire */}
           <Stack.Screen name="sodec/voucher" />
           <Stack.Screen name="sodec/autres-services" />
         </Stack>
