@@ -10,7 +10,7 @@ export default function GenerateCodeScreen() {
   return (
     <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
       <TouchableOpacity onPress={() => router.back()} style={{ marginBottom: 20 }}>
-        <Ionicons name="arrow-back" size={40} color="black" />
+        <Ionicons name="arrow-back" size={60} color="black" />
       </TouchableOpacity>
 
       <Text style={{ fontSize: 24, textAlign: "center", marginBottom: 30 }}>Envoi de la demande</Text>
