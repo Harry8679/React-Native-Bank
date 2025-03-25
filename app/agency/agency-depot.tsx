@@ -32,7 +32,7 @@ export default function DepotScreen() {
     }
 
     router.push({
-      pathname: "/sodec/agency/agency-confirmation",
+      pathname: "/agency/agency-confirmation",
       params: { client, amount, country: selectedCountry, participant }
     });
   };
