@@ -19,7 +19,7 @@ export default function DepotScreen() {
         }}
         style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
       >
-        <Ionicons name="arrow-back" size={40} color="black" />
+        <Ionicons name="arrow-back" size={60} color="black" />
       </TouchableOpacity>
 
       <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
