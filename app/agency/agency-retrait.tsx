@@ -2,29 +2,23 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
-export default function AgencyRetraitScreen() {
+export default function RetraitOperationScreen() {
   const router = useRouter();
 
   return (
     <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
-      {/* 🔙 Retour repositionné plus bas */}
-      <TouchableOpacity onPress={() => router.back()} style={{ marginBottom: 20, marginTop: 50 }}>
+      <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 50, marginBottom: 20 }}>
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
 
-      {/* ✅ Logo */}
-      <Image
-        source={require("../../assets/gimac2.png")}
-        style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 20 }}
-      />
-
+      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 20 }} />
       <Text style={{ fontSize: 24, textAlign: "center", marginBottom: 30 }}>Choix de l'opération</Text>
 
       <TouchableOpacity onPress={() => router.push("/agency/generate-code")} style={styles.btn}>
         <Text style={styles.text}>GÉNÉRATION DE CODE DE RETRAIT</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btnDisabled}>
+      <TouchableOpacity onPress={() => router.push("/agency/cancel-code")} style={styles.btn}>
         <Text style={styles.text}>ANNULATION DE CODE DE RETRAIT</Text>
       </TouchableOpacity>
 
