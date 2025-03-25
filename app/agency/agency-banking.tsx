@@ -6,7 +6,7 @@ export default function AgencyBankingScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20, justifyContent: "center" }}>
-      <Image source={require("../../assets/gimacpay.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
+      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
       <Text style={{ fontSize: 24, textAlign: "center", marginVertical: 20 }}>AGENCY BANKING</Text>
 
       <TouchableOpacity onPress={() => router.push("/agency/agency-depot")} style={styles.btn}>

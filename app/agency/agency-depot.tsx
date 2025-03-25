@@ -9,7 +9,7 @@ export default function DepotScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
-      <Image source={require("../../assets/gimacpay.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
+      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center" }} />
       <Text style={{ fontSize: 24, textAlign: "center", marginVertical: 20 }}>DÉPÔT</Text>
 
       <TextInput placeholder="Pays" style={styles.input} />
