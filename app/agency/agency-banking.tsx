@@ -32,7 +32,7 @@ export default function AgencyBankingScreen() {
         <Text style={styles.text}>DÉPÔT</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity onPress={() => router.push("/agency/agency-retrait")} style={styles.btn}>
         <Text style={styles.text}>RETRAIT</Text>
       </TouchableOpacity>
     </View>
