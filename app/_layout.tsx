@@ -102,6 +102,12 @@ export default function RootLayout() {
           <Tabs.Screen name="wallet/wallet-intermediaire" options={{ href: null }} />
           <Tabs.Screen name="wallet/wallet-to-iban" options={{ href: null }} />
 
+          <Tabs.Screen name="agency/agency-banking" options={{ href: null }} />
+          <Tabs.Screen name="agency/agency-confirmation" options={{ href: null }} />
+          <Tabs.Screen name="agency/agency-depot" options={{ href: null }} />
+          <Tabs.Screen name="agency/agency-error" options={{ href: null }} />
+          <Tabs.Screen name="agency/agency-success" options={{ href: null }} />
+
           {/* 🔒 Par sécurité */}
           <Tabs.Screen name="(tabs)" options={{ href: null }} />
           <Tabs.Screen name="+not-found" options={{ href: null }} />
