@@ -19,10 +19,10 @@ export default function AutresServicesScreen() {
 
       {/* ✅ Logo */}
       <Image
-          source={require("../../assets/logo.png")}
-          style={{ width: 200, height: 70 }}
-          resizeMode="contain"
-        />
+        source={require("../../assets/logo.png")}
+        style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 30 }}
+        resizeMode="contain"
+      />
 
       {/* ✅ Titre */}
       <Text style={{ fontSize: 24, textAlign: "center", marginBottom: 30, color: "#2E7D32" }}>
@@ -34,16 +34,24 @@ export default function AutresServicesScreen() {
         <TouchableOpacity
           key={index}
           onPress={() => router.push(item.route)}
+          activeOpacity={0.7}
           style={{
-            backgroundColor: "white",
-            padding: 15,
-            borderRadius: 5,
-            marginBottom: 15,
+            backgroundColor: "#f0f8f5",
+            padding: 18,
+            borderRadius: 12,
+            marginBottom: 20,
             borderWidth: 1,
-            borderColor: "#ccc",
+            borderColor: "#2E7D32",
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.2,
+            shadowRadius: 3,
+            elevation: 5,
           }}
         >
-          <Text style={{ color: "black", fontSize: 18 }}>{item.name}</Text>
+          <Text style={{ color: "#2E7D32", fontSize: 18, textAlign: "center", fontWeight: "bold" }}>
+            {item.name}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
