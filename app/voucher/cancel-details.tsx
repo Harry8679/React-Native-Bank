@@ -18,18 +18,21 @@ export default function CancelDetailsScreen() {
   const tel = "237699955555";
 
   const handleValidate = () => {
-    if (voucherCode !== validVoucher) {
+    const code = Array.isArray(voucherCode) ? voucherCode[0] : voucherCode;
+  
+    if (code !== validVoucher) {
       Alert.alert("Erreur", "Le code voucher saisi est invalide.");
       return;
     }
-
+  
     if (secret !== validSecret) {
       Alert.alert("Erreur", "Le code secret est incorrect.");
       return;
     }
-
+  
     router.push("/voucher/cancel-recap");
   };
+  
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
