@@ -6,8 +6,8 @@ export default function AutresServicesScreen() {
   const router = useRouter();
 
   const options = [
-    { name: "Entrer un numéro IBAN", route: "/autresServices/iban-form" },
-    { name: "Numéro IBAN enregistré", route: "/autresServices/mes-ibans" },
+    { name: "Enregistrement IBAN", route: "/autresServices/iban-form" },
+    { name: "Enregistrement WALLET", route: "/autresServices/mes-ibans" },
   ];
 
   return (
