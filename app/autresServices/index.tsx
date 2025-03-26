@@ -7,7 +7,7 @@ export default function AutresServicesScreen() {
 
   const options = [
     { name: "Enregistrement IBAN", route: "/autresServices/iban-form" },
-    { name: "Enregistrement WALLET", route: "/autresServices/mes-ibans" },
+    { name: "Enregistrement WALLET", route: "/autresServices/wallet-form" },
   ];
 
   return (
