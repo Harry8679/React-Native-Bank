@@ -36,3 +36,9 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+assets/images
+assets/airtel.png
+assets/bgfi.png
+assets/swap.png
+assets/finam.png
