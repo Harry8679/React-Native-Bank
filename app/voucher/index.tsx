@@ -17,7 +17,7 @@ export default function VoucherMenuScreen() {
 
       <Text style={{ fontSize: 24, textAlign: "center", marginBottom: 30 }}>RETRAIT GAB</Text>
 
-      <TouchableOpacity style={styles.btn} onPress={() => router.push("/voucher/generate")}>
+      <TouchableOpacity style={styles.btn} onPress={() => router.push("/voucher/generation")}>
         <Text style={styles.text}>GÉNÉRATION DE CODE VOUCHER</Text>
       </TouchableOpacity>
 
