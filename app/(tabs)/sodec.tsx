@@ -9,7 +9,7 @@ export default function SodecScreen() {
     { name: "Transfert", route: "/send", icon: "swap-horizontal" },
     { name: "Paiement", route: "/sodec/paiement", icon: "card" },
     { name: "Agency Banking", route: "/agency/agency-banking", icon: "business" },
-    { name: "Génération de voucher", route: "/sodec/voucher", icon: "document-text" },
+    { name: "Génération de voucher", route: "/voucher", icon: "document-text" },
     { name: "Autres services", route: "/sodec/autres-services", icon: "grid" },
   ] as const;
 
