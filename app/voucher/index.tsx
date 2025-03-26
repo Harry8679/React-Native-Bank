@@ -1,27 +1,24 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
-export default function VoucherMenuScreen() {
+export default function VoucherHome() {
   const router = useRouter();
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
-      {/* 🔙 Flèche retour */}
-      <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 40, marginBottom: 20 }}>
+    <View style={{ flex: 1, padding: 20 }}>
+      <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 40 }}>
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
 
-      {/* ✅ Logo */}
       <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 30 }} />
-
       <Text style={{ fontSize: 24, textAlign: "center", marginBottom: 30 }}>RETRAIT GAB</Text>
 
-      <TouchableOpacity style={styles.btn} onPress={() => router.push("/voucher/generation")}>
+      <TouchableOpacity onPress={() => router.push("/voucher/generation")} style={styles.btn}>
         <Text style={styles.text}>GÉNÉRATION DE CODE VOUCHER</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btn} onPress={() => router.push("/voucher/cancel")}>
+      <TouchableOpacity onPress={() => router.push("/voucher/annulation")} style={styles.btn}>
         <Text style={styles.text}>ANNULATION DE CODE VOUCHER</Text>
       </TouchableOpacity>
     </View>
@@ -29,6 +26,6 @@ export default function VoucherMenuScreen() {
 }
 
 const styles = {
-  btn: { backgroundColor: "#2E7D32", padding: 15, borderRadius: 5, marginBottom: 15 },
+  btn: { backgroundColor: "#2E7D32", padding: 15, borderRadius: 5, marginBottom: 20 },
   text: { color: "white", textAlign: "center", fontSize: 18 }
 };
