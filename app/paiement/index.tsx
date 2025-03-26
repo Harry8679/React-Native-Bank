@@ -6,17 +6,26 @@ export default function PaiementScreen() {
   const router = useRouter();
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#F5F7F9" }}>
-      {/* ✅ Header */}
-      <View style={{ backgroundColor: "#FFD700", padding: 20, flexDirection: "row", alignItems: "center" }}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={28} color="black" />
-        </TouchableOpacity>
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginLeft: 20 }}>GIMACPAY Paiement</Text>
-      </View>
+    <View style={{ flex: 1, backgroundColor: "#F5F7F9", padding: 20 }}>
+      {/* 🔙 Retour */}
+      <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 40, marginBottom: 20 }}>
+        <Ionicons name="arrow-back" size={50} color="black" />
+      </TouchableOpacity>
 
-      {/* ✅ Section titre */}
-      <View style={{ backgroundColor: "#0056A3", padding: 15 }}>
+      {/* ✅ Logo */}
+      <Image 
+        source={require("../../assets/gimac2.png")} 
+        style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 20 }} 
+        resizeMode="contain"
+      />
+
+      {/* ✅ Titre */}
+      <Text style={{ fontSize: 24, textAlign: "center", marginBottom: 30, color: "#2E7D32" }}>
+        GIMACPAY PAIEMENT
+      </Text>
+
+      {/* ✅ Bandeau bleu */}
+      <View style={{ backgroundColor: "#0056A3", padding: 15, borderRadius: 5, marginBottom: 20 }}>
         <Text style={{ color: "white", fontSize: 16 }}>Veuillez choisir le service</Text>
       </View>
 
@@ -41,12 +50,15 @@ export default function PaiementScreen() {
 
 const styles = {
   option: {
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     padding: 20,
-    borderBottomWidth: 1,
+    borderRadius: 8,
+    marginBottom: 15,
+    borderWidth: 1,
     borderColor: "#ccc",
   },
   optionText: {
     fontSize: 18,
+    color: "#000"
   }
 };
