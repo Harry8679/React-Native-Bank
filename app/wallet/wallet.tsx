@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, SafeAreaView, TextInput, ScrollView, Modal, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, SafeAreaView, TextInput, ScrollView, Modal, FlatList, Image } from "react-native";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -22,6 +22,21 @@ export default function WalletScreen() {
     { flag: "🇹🇩", name: "Tchad", operators: ["AIRTEL Money", "MOOV Money"] },
     { flag: "🇬🇶", name: "Guinée Equatoriale", operators: ["MUNI DINERO", "BGFI Mobile"] },
   ];
+
+  const operatorImages: { [key: string]: any } = {
+    "MTN": require("../../assets/mtn.png"),
+    "Orange": require("../../assets/orange.png"),
+    "Orange Money": require("../../assets/orange.png"),
+    "Afriland First Bank": require("../../assets/afriland.png"),
+    "CCA Bank": require("../../assets/cca.png"),
+    "Mobile Money CG": require("../../assets/mmcg.png"),
+    "AIRTEL Money": require("../../assets/airtel.png"),
+    "Airtel Money": require("../../assets/airtel.png"),
+    "BGFI Mobile": require("../../assets/bgfi.png"),
+    "BIPAY": require("../../assets/bipay.png"),
+    "MOOV Money": require("../../assets/moov.png"),
+    "MUNI DINERO": require("../../assets/muni.png"),
+  };
 
   const handleValidate = () => {
     alert("✅ Transaction envoyée avec succès !");
@@ -63,11 +78,13 @@ export default function WalletScreen() {
           </TouchableOpacity>
         ))}
 
-        {/* Modal pour s\u00E9lectionner l'op\u00E9rateur */}
+        {/* Modal pour sélection opérateur */}
         <Modal visible={operatorModalVisible} transparent animationType="slide">
           <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "center", padding: 20 }}>
             <View style={{ backgroundColor: "white", borderRadius: 10, padding: 20 }}>
-              <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 20 }}>Op\u00E9rateurs - {selectedCountry?.flag} {selectedCountry?.name}</Text>
+              <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 20 }}>
+                Opérateurs - {selectedCountry?.flag} {selectedCountry?.name}
+              </Text>
               <FlatList
                 data={selectedCountry?.operators}
                 keyExtractor={(item) => item}
@@ -78,8 +95,18 @@ export default function WalletScreen() {
                       setFormVisible(true);
                       setOperatorModalVisible(false);
                     }}
-                    style={{ paddingVertical: 12, borderBottomWidth: 1, borderColor: "#eee" }}
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      paddingVertical: 12,
+                      borderBottomWidth: 1,
+                      borderColor: "#eee"
+                    }}
                   >
+                    <Image
+                      source={operatorImages[item]}
+                      style={{ width: 40, height: 40, resizeMode: "contain", marginRight: 15 }}
+                    />
                     <Text style={{ fontSize: 16 }}>{item}</Text>
                   </TouchableOpacity>
                 )}
