@@ -15,7 +15,8 @@ export default function InternationalStart() {
   const [numero, setNumero] = useState("");
   const [amount, setAmount] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalData, setModalData] = useState([]);
+  // const [modalData, setModalData] = useState([]);
+  const [modalData, setModalData] = useState<string[]>([]);
   const [fieldTarget, setFieldTarget] = useState("");
   const router = useRouter();
 
