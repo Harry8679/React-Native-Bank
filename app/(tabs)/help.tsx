@@ -4,12 +4,18 @@ import { Ionicons } from "@expo/vector-icons";
 export default function HelpScreen() {
   // Liste des catégories d'aide
   const helpCategories = [
-    { title: "📌 Problèmes de connexion", icon: "lock-closed", color: "#2E7D32" },
-    { title: "💰 Problèmes de transaction", icon: "cash", color: "#FFC107" },
-    { title: "📄 Comment ajouter un bénéficiaire ?", icon: "person-add", color: "#007AFF" },
-    { title: "🔄 Comment suivre mes transferts ?", icon: "time", color: "#FF5722" },
-    { title: "💳 Informations sur les cartes", icon: "card", color: "#9C27B0" },
-    { title: "📞 Contacter le support", icon: "call", color: "#FF9800" },
+    { title: "Problèmes de connexion", icon: "lock-closed", color: "#2E7D32" },
+    { title: "Problèmes de transaction", icon: "cash", color: "#FFC107" },
+    { title: "Comment ajouter un bénéficiaire ?", icon: "person-add", color: "#007AFF" },
+    { title: "Comment suivre mes transferts ?", icon: "time", color: "#FF5722" },
+    { title: "Informations sur les cartes", icon: "card", color: "#9C27B0" },
+    { title: "Contacter le support", icon: "call", color: "#FF9800" },
+    // { title: "📌 Problèmes de connexion", icon: "lock-closed", color: "#2E7D32" },
+    // { title: "💰 Problèmes de transaction", icon: "cash", color: "#FFC107" },
+    // { title: "📄 Comment ajouter un bénéficiaire ?", icon: "person-add", color: "#007AFF" },
+    // { title: "🔄 Comment suivre mes transferts ?", icon: "time", color: "#FF5722" },
+    // { title: "💳 Informations sur les cartes", icon: "card", color: "#9C27B0" },
+    // { title: "📞 Contacter le support", icon: "call", color: "#FF9800" },
   ];
 
   return (
