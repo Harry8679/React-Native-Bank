@@ -58,14 +58,16 @@ export default function IbanScreen() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => Alert.alert("Redirection", "Page Mes IBANs à implémenter")}
+              // onPress={() => Alert.alert("Redirection", "Page Mes IBANs à implémenter")}
+              onPress={() => router.push("/wallet/mes-ibans")}
+              // onPress={() => Alert.alert("Redirection", "Page Mes IBANs à implémenter")}
               style={styles.optionButton}
             >
               <Text style={styles.optionText}>Liste de mes IBANs</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => router.push("/mes-wallets")}
+              onPress={() => router.push("/wallet/mes-wallets")}
               style={styles.optionButton}
             >
               <Text style={styles.optionText}>Liste de mes Wallets</Text>
@@ -102,7 +104,17 @@ export default function IbanScreen() {
                 Alert.alert(
                   "Succès",
                   `Le numéro IBAN, ${iban} a été enregistré avec succès`,
-                  [{ text: "OK", onPress: () => router.push("/sodec") }]
+                  // [{ text: "OK", onPress: () => router.push("/sodec") }]
+                  /*
+                    { text: "OK", onPress: () => router.push({
+                  pathname: "/wallet/transfer-to-iban",
+                  params: { iban, name }
+                }) 
+                  */
+                  [{ text: "OK", onPress: () => router.push({
+                    pathname: "/wallet/transfer-to-iban",
+                    params: { iban, name }
+                  }) }]
                 );
               }}
               style={[styles.submitButton, { backgroundColor: isValidIban && name ? "#2E7D32" : "gray" }]}
