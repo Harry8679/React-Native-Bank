@@ -4,7 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, Modal, FlatList } from "react-
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
-const countries = ["France", "USA", "Allemagne", "Cameroun"];
+const countries = ["🇫🇷 France", "🇺🇸 USA", "🇩🇪 Allemagne", "🇪🇸 Espagne", "🇨🇮 Cote d'Ivoire", "🇳🇬 Nigeria", "🇨🇳 Chine", "🇯🇵 Japon", "🇦🇺 Australie"];
 const terminaisons = ["MTN", "Orange", "Visa"];
 const institutions = ["Western Union", "MoneyGram", "RIA"];
 
