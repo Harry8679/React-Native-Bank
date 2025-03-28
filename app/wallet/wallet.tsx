@@ -16,15 +16,15 @@ export default function WalletScreen() {
 
   const countries = [
     { flag: "🇨🇲", name: "Cameroun", operators: ["MTN", "Orange", "Afriland First Bank", "CCA Bank"] },
-    { flag: "\uD83C\uDDE8\uD83C\uDDEB", name: "Centrafrique", operators: ["Orange Money"] },
-    { flag: "\uD83C\uDDE8\uD83C\uDDEC", name: "Congo", operators: ["Mobile Money CG", "AIRTEL Money", "BGFI Mobile", "BIPAY"] },
+    { flag: "🇨🇫", name: "Centrafrique", operators: ["Orange Money"] },
+    { flag: "🇨🇬", name: "Congo", operators: ["Mobile Money CG", "AIRTEL Money", "BGFI Mobile", "BIPAY"] },
     { flag: "🇬🇦", name: "Gabon", operators: ["AIRTEL Money", "MOOV Money", "BGFI Mobile"] },
     { flag: "🇹🇩", name: "Tchad", operators: ["AIRTEL Money", "MOOV Money"] },
-    { flag: "\uD83C\uDDEC\uD83C\uDDF6", name: "Guin\u00E9e \u00C9quatoriale", operators: ["MUNI DINERO", "BGFI Mobile"] },
+    { flag: "🇬🇶", name: "Guinée Equatoriale", operators: ["MUNI DINERO", "BGFI Mobile"] },
   ];
 
   const handleValidate = () => {
-    alert("✅ Transaction envoy\u00E9e avec succ\u00E8s !");
+    alert("✅ Transaction envoyée avec succès !");
     setFormVisible(false);
     setSelectedOperator(null);
   };
