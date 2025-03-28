@@ -23,7 +23,15 @@ export default function CardTransferScreen() {
       <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 40 }}>
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
-      <Image source={require("../../assets/logo.png")} style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 30 }} />
+      {/* <Image source={require("../../assets/logo.png")} style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 30 }} /> */}
+      {/* Logo */}
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: -50 }}>
+        <Image 
+          source={require("../../assets/logo.png")}
+          style={{ width: 200, height: 70 }} 
+          resizeMode="contain" 
+        />
+      </View>
 
       {/* Formulaire */}
       <TextInput
