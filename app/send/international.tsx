@@ -1,12 +1,19 @@
-// File: send/international/index.tsx
+import { View, Text, TextInput, TouchableOpacity, Modal, FlatList, Image } from "react-native";
 import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Modal, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
+// Listes
 const countries = ["🇩🇪 Allemagne", "🇦🇺 Australie", "🇨🇳 Chine", "🇨🇮 Cote d'Ivoire", "🇪🇸 Espagne", "🇫🇷 France", "🇯🇵 Japon", "🇳🇬 Nigeria", "🇺🇸 USA"];
 const terminaisons = ["MTN", "Orange", "Visa"];
 const institutions = ["Western Union", "MoneyGram", "RIA"];
+
+// Images associées aux terminaisons
+const terminaisonImages: { [key: string]: any } = {
+  "MTN": require("../../assets/mtn.png"),
+  "Orange": require("../../assets/orange.png"),
+  "Visa": require("../../assets/visa.png"),
+};
 
 export default function InternationalStart() {
   const [country, setCountry] = useState("Sélectionner un pays");
@@ -15,7 +22,6 @@ export default function InternationalStart() {
   const [numero, setNumero] = useState("");
   const [amount, setAmount] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  // const [modalData, setModalData] = useState([]);
   const [modalData, setModalData] = useState<string[]>([]);
   const [fieldTarget, setFieldTarget] = useState("");
   const router = useRouter();
@@ -43,12 +49,14 @@ export default function InternationalStart() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", padding: 20 }}>
+      {/* 🔙 Retour */}
       <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 40 }}>
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
 
       <Text style={{ fontSize: 24, textAlign: "center", marginVertical: 20 }}>Transfert International</Text>
 
+      {/* Sélecteurs */}
       <TouchableOpacity onPress={() => openModal(countries, "country")} style={styles.select}>
         <Text>{country}</Text>
       </TouchableOpacity>
@@ -80,6 +88,7 @@ export default function InternationalStart() {
         <Text style={styles.buttonText}>Valider</Text>
       </TouchableOpacity>
 
+      {/* ✅ Modal générique */}
       <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalBg}>
           <View style={styles.modalContent}>
@@ -88,7 +97,16 @@ export default function InternationalStart() {
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity style={styles.modalItem} onPress={() => handleSelect(item)}>
-                  <Text>{item}</Text>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    {/* ✅ Afficher image si on est dans le champ terminaison */}
+                    {fieldTarget === "terminaison" && terminaisonImages[item] && (
+                      <Image
+                        source={terminaisonImages[item]}
+                        style={{ width: 30, height: 30, marginRight: 10, resizeMode: "contain" }}
+                      />
+                    )}
+                    <Text>{item}</Text>
+                  </View>
                 </TouchableOpacity>
               )}
             />
