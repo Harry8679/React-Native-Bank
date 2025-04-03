@@ -54,7 +54,7 @@ export default function WalletToIbanScreen() {
           style={styles.optionButton}
         >
           <Ionicons name="list" size={24} color="white" style={{ marginRight: 10 }} />
-          <Text style={styles.optionText}>Liste de mes IBANs</Text>
+          <Text style={styles.optionText}>Transfert mes IBANs</Text>
         </TouchableOpacity>
 
       </ScrollView>
