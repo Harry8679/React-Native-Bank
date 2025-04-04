@@ -15,6 +15,13 @@ const terminaisonImages: { [key: string]: any } = {
   "Visa": require("../../assets/visa.png"),
 };
 
+const institutionImages: { [key: string]: any } = {
+  "Western Union": require("../../assets/western.png"),
+  "MoneyGram": require("../../assets/moneygram.png"),
+  "RIA": require("../../assets/ria.png"),
+};
+
+
 export default function InternationalStart() {
   const [country, setCountry] = useState("Sélectionner un pays");
   const [terminaison, setTerminaison] = useState("");
