@@ -85,12 +85,12 @@ export default function ReceiversScreen() {
 
               {/* ✅ Affichage conditionnel */}
               {receiver.type === "iban" && (
-                <Text style={{ fontSize: 14, color: "#555", marginTop: 5 }}>
+                <Text style={{ fontSize: 14, color: "gray" }}>
                   IBAN : {receiver.iban}
                 </Text>
               )}
               {receiver.type === "wallet" && (
-                <Text style={{ fontSize: 14, color: "#555", marginTop: 5 }}>
+                <Text style={{ fontSize: 14, color: "gray" }}>
                   Wallet : {receiver.wallet}
                 </Text>
               )}
