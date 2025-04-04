@@ -99,24 +99,33 @@ export default function InternationalStart() {
       <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalBg}>
           <View style={styles.modalContent}>
-            <FlatList
-              data={modalData}
-              keyExtractor={(item) => item}
-              renderItem={({ item }) => (
-                <TouchableOpacity style={styles.modalItem} onPress={() => handleSelect(item)}>
-                  <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    {/* ✅ Afficher image si on est dans le champ terminaison */}
-                    {fieldTarget === "terminaison" && terminaisonImages[item] && (
-                      <Image
-                        source={terminaisonImages[item]}
-                        style={{ width: 30, height: 30, marginRight: 10, resizeMode: "contain" }}
-                      />
-                    )}
-                    <Text>{item}</Text>
-                  </View>
-                </TouchableOpacity>
-              )}
-            />
+          <FlatList
+            data={modalData}
+            keyExtractor={(item) => item}
+            renderItem={({ item }) => (
+              <TouchableOpacity style={styles.modalItem} onPress={() => handleSelect(item)}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  {/* Logo pour terminaison */}
+                  {fieldTarget === "terminaison" && terminaisonImages[item] && (
+                    <Image
+                      source={terminaisonImages[item]}
+                      style={{ width: 30, height: 30, marginRight: 10, resizeMode: "contain" }}
+                    />
+                  )}
+
+                  {/* Logo pour institution */}
+                  {fieldTarget === "institution" && institutionImages[item] && (
+                    <Image
+                      source={institutionImages[item]}
+                      style={{ width: 30, height: 30, marginRight: 10, resizeMode: "contain" }}
+                    />
+                  )}
+
+                  <Text>{item}</Text>
+                </View>
+              </TouchableOpacity>
+            )}
+          />
             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.cancelBtn}>
               <Text style={{ color: "white" }}>Annuler</Text>
             </TouchableOpacity>
