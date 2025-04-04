@@ -62,7 +62,7 @@ export default function PaiementNationalScreen() {
                         setPlatformModal(false);
                       }}
                     >
-                      <Image source={item.image} style={{ width: 40, height: 40, marginRight: 15 }} />
+                      <Image source={item.image} style={{ width: 40, height: 40, marginRight: 15, resizeMode: "contain" }} />
                       <Text>{item.name}</Text>
                     </TouchableOpacity>
                   )}
