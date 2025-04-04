@@ -26,8 +26,8 @@ export default function TabsLayout() {
       <Tabs.Screen name="index" options={{ title: "Accueil" }} />
       <Tabs.Screen name="historique" options={{ title: "Historique" }} />
       <Tabs.Screen name="sodec" options={{ title: "GIMAC Pay" }} />   {/* ✅ Ton GIMAC Pay */}
-      <Tabs.Screen name="receivers" options={{ title: "Receivers" }} />
-      <Tabs.Screen name="help" options={{ title: "Help" }} />
+      <Tabs.Screen name="receivers" options={{ title: "Contacts" }} />
+      <Tabs.Screen name="help" options={{ title: "Aide" }} />
     </Tabs>
   );
 }
