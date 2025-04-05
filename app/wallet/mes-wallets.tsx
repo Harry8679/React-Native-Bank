@@ -7,8 +7,8 @@ export default function MesWalletsScreen() {
 
   // 🔥 Simulation de wallets enregistrés
   const wallets = [
-    { operator: "MTN", phone: "677123456" },
-    { operator: "Orange", phone: "699987654" },
+    { operator: "MTN", phone: "677123456", name: 'MABICKA Saviola' },
+    { operator: "Orange", phone: "699987654", name: 'AYINGONE Eléonore' },
   ];
 
   return (
@@ -37,6 +37,7 @@ export default function MesWalletsScreen() {
           <View key={index} style={{ padding: 15, backgroundColor: "#f5f5f5", borderRadius: 8, marginBottom: 15 }}>
             <Text style={{ fontSize: 16, fontWeight: "bold", color: "#2E7D32" }}>{item.operator}</Text>
             <Text style={{ color: "gray", marginTop: 5 }}>Numéro: {item.phone}</Text>
+            <Text style={{ color: "gray", marginTop: 5, fontWeight: 'bold' }}>{item.name}</Text>
           </View>
         ))}
 
