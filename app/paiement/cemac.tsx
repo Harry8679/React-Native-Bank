@@ -5,18 +5,18 @@ import { useState } from "react";
 
 // ✅ Dictionnaire images des opérateurs
 const operatorImages: { [key: string]: any } = {
-  "MTN": require("../../assets/images/mtn.png"),
-  "Orange": require("../../assets/images/orange.png"),
-  "Orange Money": require("../../assets/images/orange.png"),
-  "Afriland First Bank": require("../../assets/images/afriland.png"),
-  "CCA Bank": require("../../assets/images/cca.png"),
-  "Mobile Money CG": require("../../assets/images/mmcg.png"),
-  "AIRTEL Money": require("../../assets/images/airtel.png"),
-  "Airtel Money": require("../../assets/images/airtel.png"),
-  "BGFI Mobile": require("../../assets/images/bgfi.png"),
-  "BIPAY": require("../../assets/images/bipay.png"),
-  "MOOV Money": require("../../assets/images/moov.png"),
-  "MUNI DINERO": require("../../assets/images/muni.png"),
+  "MTN": require("../../assets/mtn.png"),
+  "Orange": require("../../assets/orange.png"),
+  "Orange Money": require("../../assets/orange.png"),
+  "Afriland First Bank": require("../../assets/afriland.png"),
+  "CCA Bank": require("../../assets/cca.png"),
+  "Mobile Money CG": require("../../assets/mmcg.png"),
+  "AIRTEL Money": require("../../assets/airtel.png"),
+  "Airtel Money": require("../../assets/airtel.png"),
+  "BGFI Mobile": require("../../assets/bgfi.png"),
+  "BIPAY": require("../../assets/bipay.png"),
+  "MOOV Money": require("../../assets/moov.png"),
+  "MUNI DINERO": require("../../assets/muni.png"),
 };
 
 export default function PaiementCemacScreen() {
@@ -60,7 +60,7 @@ export default function PaiementCemacScreen() {
       <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 40, marginBottom: 20 }}>
         <Ionicons name="arrow-back" size={50} color="black" />
       </TouchableOpacity>
-      <Image source={require("../../assets/images/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 20 }} />
+      <Image source={require("../../assets/gimac2.png")} style={{ width: 200, height: 70, alignSelf: "center", marginBottom: 20 }} />
 
       {/* Step 1: Select country and platform */}
       {step === 1 && (
