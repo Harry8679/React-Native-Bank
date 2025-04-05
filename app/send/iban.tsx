@@ -51,7 +51,8 @@ export default function IbanScreen() {
 
             <TouchableOpacity
               // onPress={() => Alert.alert("Redirection", "Page Enregistrement Wallet à implémenter")}
-              onPress={() => router.push("/wallet/iban-wallet-menu")}
+              // onPress={() => router.push("/wallet/iban-wallet-menu")}
+              onPress={() => router.push("/wallet/wallet")}
               style={styles.optionButton}
             >
               <Ionicons name="wallet" size={24} color="white" style={{ marginRight: 10 }} />
